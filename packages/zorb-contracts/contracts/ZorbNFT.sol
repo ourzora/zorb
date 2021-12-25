@@ -16,10 +16,16 @@ interface INFT {
 contract ZorbNFT is ERC721Delegated {
     using CountersUpgradeable for CountersUpgradeable.Counter;
 
+    // new years 2020
+    uint128 private constant START_AT = 1577836800;
+    uint128 private constant START_YEAR = 2020;
+    uint128 private constant YEAR_INTERVAL = 31536000;
+    uint128 private constant TIME_OPEN = 172800;
+
     CountersUpgradeable.Counter currentTokenId;
     mapping(uint256 => string) metadataJson;
-    // minted counter
     mapping(address => bool) hasMinted;
+    mapping(uint256 => uint256) tokenIdToYear;
     IPublicSharedMetadata private immutable sharedMetadata;
 
     modifier canOnlyMintOnce() {
@@ -46,7 +52,15 @@ contract ZorbNFT is ERC721Delegated {
     }
 
     function mint() public canOnlyMintOnce {
+        uint256 secondsSince2020 = (block.timestamp - START_AT);
+        uint256 year = ((block.timestamp - START_AT) / YEAR_INTERVAL) + 2020;
+        require(
+            secondsSince2020 % YEAR_INTERVAL >= 0 &&
+                secondsSince2020 % YEAR_INTERVAL <= TIME_OPEN,
+            "Not new years + 3 days"
+        );
         _mint(msg.sender, currentTokenId.current());
+        tokenIdToYear[currentTokenId.current()] = year;
         currentTokenId.increment();
     }
 
@@ -80,12 +94,17 @@ contract ZorbNFT is ERC721Delegated {
 
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId), "No token");
+
         return
             sharedMetadata.encodeMetadataJSON(
                 abi.encodePacked(
                     '{"name": "Zora Zorb #',
                     StringsUpgradeable.toString(tokenId),
-                    '", "description": "Zora Zorb New Years Drop 2022\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.zora.co/](zorb.zora.co)", "image": "',
+                    " (",
+                    StringsUpgradeable.toString(tokenIdToYear[tokenId]),
+                    ')", "description": "Zora Zorb New Years Drop ',
+                    StringsUpgradeable.toString(tokenIdToYear[tokenId]),
+                    '\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.zora.co/](zorb.zora.co)", "image": "',
                     zorbForAddress(INFT(address(this)).ownerOf(tokenId)),
                     '"}'
                 )

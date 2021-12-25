@@ -1,7 +1,7 @@
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
 import "@nomiclabs/hardhat-ethers";
-import { ethers, deployments } from "hardhat";
+import { ethers, deployments, network } from "hardhat";
 import { ERC721Base, ZorbNFT, BaseTestContract } from "../typechain";
 import { writeFile } from "fs/promises";
 
@@ -49,14 +49,16 @@ describe("ZorbNFT", () => {
 
   it("renders", async () => {
     const signers = await ethers.getSigners();
+    await network.provider.send('evm_setNextBlockTimestamp', [1672531200]);
+    await network.provider.send("evm_mine");
     const zorbs = [];
     const signerAddresses: string[] = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 20; i++) {
       await childNft.connect(signers[i]).mint();
       const zorb = await baseNft.tokenURI(i + 1);
       zorbs.push(parseZorb(zorb).image);
       signerAddresses.push(await signers[i].getAddress());
     }
-    await writeFile("zorb.html", zorbs.map((zorb, indx) => `<div>${signerAddresses[indx]}${makeInline(zorb).replace(/grad/g, `grad${indx}`)}</div>`).join("\n"));
+    await writeFile("./out/zorb.html", zorbs.map((zorb, indx) => `<div>${signerAddresses[indx]}${makeInline(zorb).replace(/grad/g, `grad${indx}`)}<zora-zorb address="${signerAddresses[indx]}"></zora-zorb></div>`).join("\n")+`<script src="./zorb-web-component.umd.js"></script>`);
   });
 });
