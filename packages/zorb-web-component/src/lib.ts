@@ -18,10 +18,6 @@ const quintIn = (p: number) => {
   return p * p * p * p * p;
 };
 
-const inSine2 = (p: number) => {
-  return Math.sin(p * Math.PI);
-};
-
 const bscale = (byte: number, max: number) => Math.round((byte / 255) * max);
 
 // Util for keeping hue range in 0-360 positive
@@ -40,7 +36,6 @@ const bScaleRange = (byte: number, min: number, max: number) => {
 
 const lerpHueFn = (optionNum: number, direction: number) => {
   const option = optionNum % 4;
-  console.log({ option });
   const multiplier = direction ? 1 : -1;
   switch (option) {
     case 0: {
@@ -65,14 +60,7 @@ const lerpHueFn = (optionNum: number, direction: number) => {
     case 3:
     default: {
       return function (hue: number, pct: number) {
-        console.log({
-          hue,
-          multiplier,
-          optionNum: optionNum,
-          scaled: bscale(optionNum, 1.0)
-        });
         let endHue = hue + multiplier * 60 * bscale(optionNum, 1.0) + 30;
-        console.log({ endHue });
         let lerpPercent = cubicInOut(pct);
         return clampHue((1.0 - lerpPercent) * hue + lerpPercent * endHue);
       };
@@ -109,28 +97,26 @@ const lerpSaturationFn = (optionNum: number) => {
     case 1:
     default: {
       return function (start: number, end: number, pct: number) {
-        let lerpPercent = inSine2(pct);
+        let lerpPercent = linear(pct);
         return (1.0 - lerpPercent) * start + lerpPercent * end;
       };
     }
   }
 };
 
+
 export const gradientForAddress = (address: string) => {
   const bytes = arrayify(address).reverse();
   const hueShiftFn = lerpHueFn(bytes[3], bytes[6] % 2);
   const startHue = bscale(bytes[12], 360);
-  const startLightness = bScaleRange(bytes[2], 30, 70);
+  const startLightness = bScaleRange(bytes[2], 32, 69.5);
   const endLightness =
-    (Math.max(startLightness + 20, 98) + bScaleRange(bytes[8], 72, 98)) / 2;
-  console.log("bytes[7]", bytes[7]);
-  let startSaturation = bScaleRange(bytes[7], 72, 85);
-  let endSaturation = Math.max(
-    Math.max(startSaturation + 30, 90),
-    bScaleRange(bytes[10], 60, 92)
+    (97 + bScaleRange(bytes[8], 72, 97)) / 2;
+  let startSaturation = bScaleRange(bytes[7], 81, 97);
+  let endSaturation = Math.min(
+    startSaturation - 10,
+    bScaleRange(bytes[10], 70, 92)
   );
-  startSaturation = startSaturation * 0.5 + startLightness * 0.5;
-  endSaturation = endSaturation * 0.5 + endLightness * 0.5;
 
   console.log({
     startSaturation,
@@ -170,9 +156,9 @@ export const gradientForAddress = (address: string) => {
   ];
 
   //return inputs;
-  
+
   return inputs
     .map((c: ColorInput) => tinycolor(c))
     .map((tc: tinycolor.Instance) => tc.toHslString())
-    
+
 };
