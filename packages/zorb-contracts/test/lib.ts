@@ -40,7 +40,6 @@ const bScaleRange = (byte: number, min: number, max: number) => {
 
 export const lerpHueFn = (optionNum: number, direction: number) => {
   const option = optionNum % 4;
-  console.log({ option });
   const multiplier = direction ? 1 : -1;
   switch (option) {
     case 0: {
@@ -65,14 +64,7 @@ export const lerpHueFn = (optionNum: number, direction: number) => {
     case 3:
     default: {
       return function (hue: number, pct: number) {
-        console.log({
-          hue,
-          multiplier,
-          optionNum: optionNum,
-          scaled: bscale(optionNum, 1.0)
-        });
         let endHue = hue + multiplier * 60 * bscale(optionNum, 1.0) + 30;
-        console.log({ endHue });
         let lerpPercent = cubicInOut(pct);
         return clampHue((1.0 - lerpPercent) * hue + lerpPercent * endHue);
       };
@@ -123,7 +115,6 @@ export const gradientForAddress = (address: string) => {
   const startLightness = bScaleRange(bytes[2], 30, 70);
   const endLightness =
     (Math.max(startLightness + 20, 98) + bScaleRange(bytes[8], 72, 98)) / 2;
-  console.log("bytes[7]", bytes[7]);
   let startSaturation = bScaleRange(bytes[7], 72, 85);
   let endSaturation = Math.max(
     Math.max(startSaturation + 30, 90),
@@ -132,13 +123,6 @@ export const gradientForAddress = (address: string) => {
   startSaturation = startSaturation * 0.5 + startLightness * 0.5;
   endSaturation = endSaturation * 0.5 + endLightness * 0.5;
 
-  console.log({
-    startSaturation,
-    endSaturation,
-    startHue,
-    startLightness,
-    endLightness
-  });
   const lightnessShiftFn = lerpLightnessFn(bytes[5] % 2);
   const saturationShiftFn = lerpSaturationFn(bytes[3] % 2);
   const inputs: ColorInput[] = [

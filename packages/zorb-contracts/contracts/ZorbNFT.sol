@@ -71,9 +71,8 @@ contract ZorbNFT is ERC721Delegated {
                 '" /><stop offset="100%" stop-color="',
                 colors[4],
                 '" /></radialGradient></defs>'
-                '<g transform="translate(25%, 25%)">'
                 '<circle cx="50%" cy="50%" r="50%" fill="url(#grad)" />'
-                "</g></svg>"
+                "</svg>"
             )
         );
         return string(abi.encodePacked("data:image/svg+xml;base64,", encoded));
