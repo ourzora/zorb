@@ -7,7 +7,8 @@ import {
   TestColorLib,
   TestSharedNFTLogic,
 } from "../typechain";
-import { lerpHueFn } from "./lib";
+// @ts-ignore
+import { lerpHueFn } from "@zoralabs/zorb-web-component/src/lib";
 
 describe("BaseMetadataToken", () => {
   let signer: SignerWithAddress;

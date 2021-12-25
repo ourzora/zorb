@@ -38,7 +38,7 @@ const bScaleRange = (byte: number, min: number, max: number) => {
   return bscale(byte, max - min) + min;
 };
 
-const lerpHueFn = (optionNum: number, direction: number) => {
+export const lerpHueFn = (optionNum: number, direction: number) => {
   const option = optionNum % 4;
   console.log({ option });
   const multiplier = direction ? 1 : -1;
