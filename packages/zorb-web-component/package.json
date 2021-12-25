@@ -1,5 +1,5 @@
 {
-  "name": "zorb-web-component",
+  "name": "@zoralabs/zorb-web-component",
   "version": "0.0.1",
   "type": "module",
   "scripts": {

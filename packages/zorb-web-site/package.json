@@ -1,0 +1,18 @@
+{
+  "name": "@zoralabs/zorb-web-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  },
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.7.1",
+    "@zoralabs/simple-wallet-provider": "^0.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

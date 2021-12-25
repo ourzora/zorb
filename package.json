@@ -1,0 +1,4 @@
+{
+  "private": true,
+  "workspaces": ["packages/zorb-contracts", "packages/zorb-web-component", "packages/zorb-web-site"]
+}

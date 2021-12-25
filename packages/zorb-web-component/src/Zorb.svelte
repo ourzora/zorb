@@ -5,7 +5,7 @@
   export let height = undefined;
   export let address;
 
-  $: gradientInfo = gradientForAddress(address);
+  const gradientInfo = gradientForAddress(address || '0x0000000000000000000000000000000000000000');
 </script>
 
 <svg
