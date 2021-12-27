@@ -22,10 +22,12 @@ contract ZorbNFT is ERC721Delegated {
     uint128 private constant YEAR_INTERVAL = 31536000;
     uint128 private constant TIME_OPEN = 172800;
 
+    mapping(uint256 => uint256) private yearToMintCount;
+
     CountersUpgradeable.Counter currentTokenId;
     mapping(uint256 => string) metadataJson;
     mapping(address => bool) hasMinted;
-    mapping(uint256 => uint256) tokenIdToYear;
+    mapping(uint256 => uint256) yearToMintId;
     IPublicSharedMetadata private immutable sharedMetadata;
 
     modifier canOnlyMintOnce() {
@@ -60,11 +62,15 @@ contract ZorbNFT is ERC721Delegated {
             "Not new years + 3 days"
         );
         _mint(msg.sender, currentTokenId.current());
-        tokenIdToYear[currentTokenId.current()] = year;
+        if (yearToMintCount[year] == 0) {
+            yearToMintCount[year] = currentTokenId.current();
+        }
+        yearToMintId[currentTokenId.current()] = year;
         currentTokenId.increment();
     }
 
     function burn(uint256 tokenId) public {
+        require(_isApprovedOrOwner(msg.sender, tokenId), "Only approved");
         _burn(tokenId);
     }
 
@@ -94,17 +100,20 @@ contract ZorbNFT is ERC721Delegated {
 
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId), "No token");
+        uint256 year = yearToMintId[tokenId];
 
         return
             sharedMetadata.encodeMetadataJSON(
                 abi.encodePacked(
                     '{"name": "Zora Zorb #',
-                    StringsUpgradeable.toString(tokenId),
+                    StringsUpgradeable.toString(
+                        tokenId - yearToMintCount[year]
+                    ),
                     " (",
-                    StringsUpgradeable.toString(tokenIdToYear[tokenId]),
+                    StringsUpgradeable.toString(year),
                     ')", "description": "Zora Zorb New Years Drop ',
-                    StringsUpgradeable.toString(tokenIdToYear[tokenId]),
-                    '\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.zora.co/](zorb.zora.co)", "image": "',
+                    StringsUpgradeable.toString(year),
+                    '\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.zora.co/](zorb.zora.co)\\n\\nWhen Zorbs are sold or transferred, they update to reflect the zorb of the current owner.", "image": "',
                     zorbForAddress(INFT(address(this)).ownerOf(tokenId)),
                     '"}'
                 )

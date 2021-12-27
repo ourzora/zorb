@@ -49,7 +49,7 @@ describe("ZorbNFT", () => {
 
   it("renders", async () => {
     const signers = await ethers.getSigners();
-    await network.provider.send('evm_setNextBlockTimestamp', [1672531200]);
+    await network.provider.send('evm_setNextBlockTimestamp', [1640995200]);
     await network.provider.send("evm_mine");
     const zorbs = [];
     const signerAddresses: string[] = [];

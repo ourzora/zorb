@@ -2,7 +2,7 @@ import { useState } from "react";
 import { css, cx } from "@emotion/css";
 import Octo from "./octo";
 import Dark from "./dark";
-import "@zoralabs/zorb-web-component/dist/zorb-web-component.es";
+import "@zoralabs/zorb-web-component";
 
 const CommandBlock = ({ children }: { children: React.ReactNode }) => (
   <span

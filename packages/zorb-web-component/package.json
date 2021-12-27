@@ -1,6 +1,7 @@
 {
   "name": "@zoralabs/zorb-web-component",
   "version": "0.0.1",
+  "main": "dist/zorb-web-component.es.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
