@@ -1,4 +1,5 @@
 import "@zoralabs/zorb-web-component/dist/zorb-web-component.es";
+import 'web-component-essentials';
 import { useNFTIndexerQuery, useNFTType } from "@zoralabs/nft-hooks";
 import { RoundedContainer } from "./RoundedContainer";
 import { css } from "@emotion/css";
@@ -20,7 +21,8 @@ const ZorbCard = ({ result }: { result: any }) => {
           padding: 10px;
         `}
       >
-        <zora-zorb address={result.owner}></zora-zorb>
+        <zora-zorb input={result.owner.toString()}></zora-zorb>
+        <zora-zorb address={'0x0djfajsdfkja'}></zora-zorb>
       </div>
       <div
         className={css`
@@ -131,7 +133,7 @@ export const ZorbCards = () => {
       `}
     >
       {results.map((result) => (
-        <ZorbCard result={result} />
+        <ZorbCard key={result.tokenId} result={result} />
       ))}
     </div>
   );
