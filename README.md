@@ -15,3 +15,9 @@ on-chain zorb NFT contracts
 #### zorb-web-site
 
 web-site for zorbs and minting
+
+**run**: `yarn run dev`
+
+### Setup
+`yarn`
+
