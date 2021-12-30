@@ -16,24 +16,16 @@ interface INFT {
 contract ZorbNFT is ERC721Delegated {
     using CountersUpgradeable for CountersUpgradeable.Counter;
 
-    // new years 2020
-    uint128 private constant START_AT = 1577836800;
-    uint128 private constant START_YEAR = 2020;
-    uint128 private constant YEAR_INTERVAL = 31536000;
-    uint128 private constant TIME_OPEN = 172800;
-
-    mapping(uint256 => uint256) private yearToMintCount;
+    // new years 2022 base
+    uint256 private constant MINT_START_AT = 1640995200;
+    uint256 private constant MINT_DURATION = 24 hours;
 
     CountersUpgradeable.Counter currentTokenId;
-    mapping(uint256 => string) metadataJson;
-    mapping(address => bool) hasMinted;
-    mapping(uint256 => uint256) yearToMintId;
     IPublicSharedMetadata private immutable sharedMetadata;
 
-    modifier canOnlyMintOnce() {
-        require(!hasMinted[msg.sender], "cannot mint twice");
+    modifier onlyApproved(uint256 tokenId) {
+        require(_isApprovedOrOwner(msg.sender, tokenId), "Ony approved");
         _;
-        hasMinted[msg.sender] = true;
     }
 
     constructor(address baseFactory, IPublicSharedMetadata _sharedMetadata)
@@ -53,24 +45,27 @@ contract ZorbNFT is ERC721Delegated {
         currentTokenId.increment();
     }
 
-    function mint() public canOnlyMintOnce {
-        uint256 secondsSince2020 = (block.timestamp - START_AT);
-        uint256 year = ((block.timestamp - START_AT) / YEAR_INTERVAL) + 2020;
-        require(
-            secondsSince2020 % YEAR_INTERVAL >= 0 &&
-                secondsSince2020 % YEAR_INTERVAL <= TIME_OPEN,
-            "Not new years + 3 days"
-        );
+    function mintIsOpen() public view returns (bool) {
+        return
+            block.timestamp > MINT_START_AT &&
+            block.timestamp <= MINT_START_AT + MINT_DURATION;
+    }
+
+    function mint() public {
+        require(mintIsOpen(), "not open");
         _mint(msg.sender, currentTokenId.current());
-        if (yearToMintCount[year] == 0) {
-            yearToMintCount[year] = currentTokenId.current();
-        }
-        yearToMintId[currentTokenId.current()] = year;
         currentTokenId.increment();
     }
 
-    function burn(uint256 tokenId) public {
-        require(_isApprovedOrOwner(msg.sender, tokenId), "Only approved");
+    function adminMint(address[] memory to) public onlyOwner {
+        for (uint256 i = 0; i < to.length; i++) {
+            _mint(to[i], currentTokenId.current());
+            currentTokenId.increment();
+        }
+    }
+
+    // onlyapproved guard
+    function burn(uint256 tokenId) external onlyApproved(tokenId) {
         _burn(tokenId);
     }
 
@@ -78,7 +73,7 @@ contract ZorbNFT is ERC721Delegated {
         bytes[5] memory colors = ColorLib.gradientForAddress(user);
         string memory encoded = sharedMetadata.base64Encode(
             abi.encodePacked(
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs>'
+                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><defs>'
                 '<radialGradient fx="64.96%" fy="24.36%" id="grad">'
                 '<stop offset="15.62%" stop-color="',
                 colors[0],
@@ -91,7 +86,7 @@ contract ZorbNFT is ERC721Delegated {
                 '" /><stop offset="100%" stop-color="',
                 colors[4],
                 '" /></radialGradient></defs>'
-                '<circle cx="50%" cy="50%" r="50%" fill="url(#grad)" />'
+                '<g transform="translate(10 10) scale(0.9)"><circle cx="50%" cy="50%" r="50%" fill="url(#grad)" /></g>'
                 "</svg>"
             )
         );
@@ -100,20 +95,14 @@ contract ZorbNFT is ERC721Delegated {
 
     function tokenURI(uint256 tokenId) external view returns (string memory) {
         require(_exists(tokenId), "No token");
-        uint256 year = yearToMintId[tokenId];
 
         return
             sharedMetadata.encodeMetadataJSON(
                 abi.encodePacked(
                     '{"name": "Zora Zorb #',
-                    StringsUpgradeable.toString(
-                        tokenId - yearToMintCount[year]
-                    ),
-                    " (",
-                    StringsUpgradeable.toString(year),
-                    ')", "description": "Zora Zorb New Years Drop ',
-                    StringsUpgradeable.toString(year),
-                    '\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.zora.co/](zorb.zora.co)\\n\\nWhen Zorbs are sold or transferred, they update to reflect the zorb of the current owner.", "image": "',
+                    StringsUpgradeable.toString(tokenId),
+                    '", "description": "Zora Zorb New Years Drop 2022',
+                    '\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.dev/](zorb.dev)\\n\\nWhen Zorbs are sold or transferred, they update to reflect the zorb of the current owner.", "image": "',
                     zorbForAddress(INFT(address(this)).ownerOf(tokenId)),
                     '"}'
                 )

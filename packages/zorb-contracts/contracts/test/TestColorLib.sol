@@ -4,7 +4,7 @@ pragma solidity 0.8.9;
 import {ColorLib} from "../ColorLib.sol";
 
 contract TestColorLib {
-    function getLerp(address input) external view returns (bytes[5] memory) {
+    function getLerp(address input) external pure returns (bytes[5] memory) {
         return ColorLib.gradientForAddress(input);
     }
 
@@ -13,7 +13,7 @@ contract TestColorLib {
         uint256 direction,
         uint256 uhue,
         uint8 pct
-    ) public view returns (uint256) {
+    ) public pure returns (uint256) {
         return ColorLib.lerpHue(optionNum, direction, uhue, pct);
     }
 }

@@ -1,0 +1,266 @@
+{
+  "address": "0xC36eA64401C95a59fED5E87024FEB2f89B55662E",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "unencoded",
+          "type": "bytes"
+        }
+      ],
+      "name": "base64Encode",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "imageUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "animationUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenOfEdition",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "editionSize",
+          "type": "uint256"
+        }
+      ],
+      "name": "createMetadataEdition",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "mediaData",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenOfEdition",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "editionSize",
+          "type": "uint256"
+        }
+      ],
+      "name": "createMetadataJSON",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "json",
+          "type": "bytes"
+        }
+      ],
+      "name": "encodeMetadataJSON",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "numberToString",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "imageUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "animationUrl",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenOfEdition",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenMediaData",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xd9422d2c096f2a24a028bc772cdf84704e9ddbf4af67fb49ad73f9f872ff379e",
+  "receipt": {
+    "to": null,
+    "from": "0x9444390c01Dd5b7249E53FAc31290F7dFF53450D",
+    "contractAddress": "0xC36eA64401C95a59fED5E87024FEB2f89B55662E",
+    "transactionIndex": 26,
+    "gasUsed": "762789",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x5ad5f8f6a9d37d13569f4c06956589e224d894966bd37170a7dc82eb8553d178",
+    "transactionHash": "0xd9422d2c096f2a24a028bc772cdf84704e9ddbf4af67fb49ad73f9f872ff379e",
+    "logs": [],
+    "blockNumber": 9903433,
+    "cumulativeGasUsed": "7240912",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "solcInputHash": "7a0efe92be921e014575fd36f8378ac4",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"unencoded\",\"type\":\"bytes\"}],\"name\":\"base64Encode\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"imageUrl\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"animationUrl\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"tokenOfEdition\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"editionSize\",\"type\":\"uint256\"}],\"name\":\"createMetadataEdition\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"mediaData\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"tokenOfEdition\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"editionSize\",\"type\":\"uint256\"}],\"name\":\"createMetadataJSON\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"json\",\"type\":\"bytes\"}],\"name\":\"encodeMetadataJSON\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"numberToString\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"imageUrl\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"animationUrl\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"tokenOfEdition\",\"type\":\"uint256\"}],\"name\":\"tokenMediaData\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"base64Encode(bytes)\":{\"params\":{\"unencoded\":\"bytes to base64-encode\"}},\"createMetadataEdition(string,string,string,string,uint256,uint256)\":{\"params\":{\"animationUrl\":\"URL of animation to render for edition\",\"description\":\"Description of NFT in metadata\",\"editionSize\":\"Size of entire edition to show\",\"imageUrl\":\"URL of image to render for edition\",\"name\":\"Name of NFT in metadata\",\"tokenOfEdition\":\"Token ID for specific token\"}},\"createMetadataJSON(string,string,string,uint256,uint256)\":{\"params\":{\"description\":\"Description of NFT in metadata\",\"editionSize\":\"Size of entire edition to show\",\"mediaData\":\"Data for media to include in json object\",\"name\":\"Name of NFT in metadata\",\"tokenOfEdition\":\"Token ID for specific token\"}},\"encodeMetadataJSON(bytes)\":{\"params\":{\"json\":\"Raw json to base64 and turn into a data-uri\"}},\"numberToString(uint256)\":{\"params\":{\"value\":\"number to return as a string\"}},\"tokenMediaData(string,string,uint256)\":{\"params\":{\"animationUrl\":\"URL of animation to render for edition\",\"imageUrl\":\"URL of image to render for edition\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"createMetadataEdition(string,string,string,string,uint256,uint256)\":{\"notice\":\"Generate edition metadata from storage information as base64-json blob Combines the media data and metadata\"},\"createMetadataJSON(string,string,string,uint256,uint256)\":{\"notice\":\"Function to create the metadata json string for the nft edition\"},\"encodeMetadataJSON(bytes)\":{\"notice\":\"Encodes the argument json bytes into base64-data uri format\"},\"numberToString(uint256)\":{\"notice\":\"Proxy to openzeppelin's toString function\"},\"tokenMediaData(string,string,uint256)\":{\"notice\":\"Generates edition metadata from storage information as base64-json blob Combines the media data and metadata\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/test/TestSharedNFTLogic.sol\":\"TestSharedNFTLogic\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Strings.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev String operations.\\n */\\nlibrary StringsUpgradeable {\\n    bytes16 private constant _HEX_SYMBOLS = \\\"0123456789abcdef\\\";\\n\\n    /**\\n     * @dev Converts a `uint256` to its ASCII `string` decimal representation.\\n     */\\n    function toString(uint256 value) internal pure returns (string memory) {\\n        // Inspired by OraclizeAPI's implementation - MIT licence\\n        // https://github.com/oraclize/ethereum-api/blob/b42146b063c7d6ee1358846c198246239e9360e8/oraclizeAPI_0.4.25.sol\\n\\n        if (value == 0) {\\n            return \\\"0\\\";\\n        }\\n        uint256 temp = value;\\n        uint256 digits;\\n        while (temp != 0) {\\n            digits++;\\n            temp /= 10;\\n        }\\n        bytes memory buffer = new bytes(digits);\\n        while (value != 0) {\\n            digits -= 1;\\n            buffer[digits] = bytes1(uint8(48 + uint256(value % 10)));\\n            value /= 10;\\n        }\\n        return string(buffer);\\n    }\\n\\n    /**\\n     * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation.\\n     */\\n    function toHexString(uint256 value) internal pure returns (string memory) {\\n        if (value == 0) {\\n            return \\\"0x00\\\";\\n        }\\n        uint256 temp = value;\\n        uint256 length = 0;\\n        while (temp != 0) {\\n            length++;\\n            temp >>= 8;\\n        }\\n        return toHexString(value, length);\\n    }\\n\\n    /**\\n     * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.\\n     */\\n    function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {\\n        bytes memory buffer = new bytes(2 * length + 2);\\n        buffer[0] = \\\"0\\\";\\n        buffer[1] = \\\"x\\\";\\n        for (uint256 i = 2 * length + 1; i > 1; --i) {\\n            buffer[i] = _HEX_SYMBOLS[value & 0xf];\\n            value >>= 4;\\n        }\\n        require(value == 0, \\\"Strings: hex length insufficient\\\");\\n        return string(buffer);\\n    }\\n}\\n\",\"keccak256\":\"0x398d3323c1932a5986bf36be7c57593e121e69d5db5b6574b4ee0d031443de37\",\"license\":\"MIT\"},\"@zoralabs/nft-editions-contracts/contracts/IPublicSharedMetadata.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity ^0.8.6;\\n\\n/// Shared public library for on-chain NFT functions\\ninterface IPublicSharedMetadata {\\n    /// @param unencoded bytes to base64-encode\\n    function base64Encode(bytes memory unencoded)\\n        external\\n        pure\\n        returns (string memory);\\n\\n    /// Encodes the argument json bytes into base64-data uri format\\n    /// @param json Raw json to base64 and turn into a data-uri\\n    function encodeMetadataJSON(bytes memory json)\\n        external\\n        pure\\n        returns (string memory);\\n\\n    /// Proxy to openzeppelin's toString function\\n    /// @param value number to return as a string\\n    function numberToString(uint256 value)\\n        external\\n        pure\\n        returns (string memory);\\n}\\n\",\"keccak256\":\"0xa5f156c261db1274830f5b64c64352a379555d3709780e0ab491491cd9e94566\",\"license\":\"GPL-3.0\"},\"@zoralabs/nft-editions-contracts/contracts/SharedNFTLogic.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\n\\npragma solidity ^0.8.6;\\n\\nimport {StringsUpgradeable} from \\\"@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol\\\";\\nimport {Base64} from \\\"base64-sol/base64.sol\\\";\\nimport {IPublicSharedMetadata} from \\\"./IPublicSharedMetadata.sol\\\";\\n\\n/// Shared NFT logic for rendering metadata associated with editions\\n/// @dev Can safely be used for generic base64Encode and numberToString functions\\ncontract SharedNFTLogic is IPublicSharedMetadata {\\n    /// @param unencoded bytes to base64-encode\\n    function base64Encode(bytes memory unencoded)\\n        public\\n        pure\\n        override\\n        returns (string memory)\\n    {\\n        return Base64.encode(unencoded);\\n    }\\n\\n    /// Proxy to openzeppelin's toString function\\n    /// @param value number to return as a string\\n    function numberToString(uint256 value)\\n        public\\n        pure\\n        override\\n        returns (string memory)\\n    {\\n        return StringsUpgradeable.toString(value);\\n    }\\n\\n    /// Generate edition metadata from storage information as base64-json blob\\n    /// Combines the media data and metadata\\n    /// @param name Name of NFT in metadata\\n    /// @param description Description of NFT in metadata\\n    /// @param imageUrl URL of image to render for edition\\n    /// @param animationUrl URL of animation to render for edition\\n    /// @param tokenOfEdition Token ID for specific token\\n    /// @param editionSize Size of entire edition to show\\n    function createMetadataEdition(\\n        string memory name,\\n        string memory description,\\n        string memory imageUrl,\\n        string memory animationUrl,\\n        uint256 tokenOfEdition,\\n        uint256 editionSize\\n    ) external pure returns (string memory) {\\n        string memory _tokenMediaData = tokenMediaData(\\n            imageUrl,\\n            animationUrl,\\n            tokenOfEdition\\n        );\\n        bytes memory json = createMetadataJSON(\\n            name,\\n            description,\\n            _tokenMediaData,\\n            tokenOfEdition,\\n            editionSize\\n        );\\n        return encodeMetadataJSON(json);\\n    }\\n\\n    /// Function to create the metadata json string for the nft edition\\n    /// @param name Name of NFT in metadata\\n    /// @param description Description of NFT in metadata\\n    /// @param mediaData Data for media to include in json object\\n    /// @param tokenOfEdition Token ID for specific token\\n    /// @param editionSize Size of entire edition to show\\n    function createMetadataJSON(\\n        string memory name,\\n        string memory description,\\n        string memory mediaData,\\n        uint256 tokenOfEdition,\\n        uint256 editionSize\\n    ) public pure returns (bytes memory) {\\n        bytes memory editionSizeText;\\n        if (editionSize > 0) {\\n            editionSizeText = abi.encodePacked(\\n                \\\"/\\\",\\n                numberToString(editionSize)\\n            );\\n        }\\n        return\\n            abi.encodePacked(\\n                '{\\\"name\\\": \\\"',\\n                name,\\n                \\\" \\\",\\n                numberToString(tokenOfEdition),\\n                editionSizeText,\\n                '\\\", \\\"',\\n                'description\\\": \\\"',\\n                description,\\n                '\\\", \\\"',\\n                mediaData,\\n                'properties\\\": {\\\"number\\\": ',\\n                numberToString(tokenOfEdition),\\n                ', \\\"name\\\": \\\"',\\n                name,\\n                '\\\"}}'\\n            );\\n    }\\n\\n    /// Encodes the argument json bytes into base64-data uri format\\n    /// @param json Raw json to base64 and turn into a data-uri\\n    function encodeMetadataJSON(bytes memory json)\\n        public\\n        pure\\n        override\\n        returns (string memory)\\n    {\\n        return\\n            string(\\n                abi.encodePacked(\\n                    \\\"data:application/json;base64,\\\",\\n                    base64Encode(json)\\n                )\\n            );\\n    }\\n\\n    /// Generates edition metadata from storage information as base64-json blob\\n    /// Combines the media data and metadata\\n    /// @param imageUrl URL of image to render for edition\\n    /// @param animationUrl URL of animation to render for edition\\n    function tokenMediaData(\\n        string memory imageUrl,\\n        string memory animationUrl,\\n        uint256 tokenOfEdition\\n    ) public pure returns (string memory) {\\n        bool hasImage = bytes(imageUrl).length > 0;\\n        bool hasAnimation = bytes(animationUrl).length > 0;\\n        if (hasImage && hasAnimation) {\\n            return\\n                string(\\n                    abi.encodePacked(\\n                        'image\\\": \\\"',\\n                        imageUrl,\\n                        \\\"?id=\\\",\\n                        numberToString(tokenOfEdition),\\n                        '\\\", \\\"animation_url\\\": \\\"',\\n                        animationUrl,\\n                        \\\"?id=\\\",\\n                        numberToString(tokenOfEdition),\\n                        '\\\", \\\"'\\n                    )\\n                );\\n        }\\n        if (hasImage) {\\n            return\\n                string(\\n                    abi.encodePacked(\\n                        'image\\\": \\\"',\\n                        imageUrl,\\n                        \\\"?id=\\\",\\n                        numberToString(tokenOfEdition),\\n                        '\\\", \\\"'\\n                    )\\n                );\\n        }\\n        if (hasAnimation) {\\n            return\\n                string(\\n                    abi.encodePacked(\\n                        'animation_url\\\": \\\"',\\n                        animationUrl,\\n                        \\\"?id=\\\",\\n                        numberToString(tokenOfEdition),\\n                        '\\\", \\\"'\\n                    )\\n                );\\n        }\\n\\n        return \\\"\\\";\\n    }\\n}\\n\",\"keccak256\":\"0xce2d20f26c07eb4c76ee30543085912ed1a38f6317c260e48964debef0c85390\",\"license\":\"GPL-3.0\"},\"base64-sol/base64.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n\\npragma solidity >=0.6.0;\\n\\n/// @title Base64\\n/// @author Brecht Devos - <brecht@loopring.org>\\n/// @notice Provides functions for encoding/decoding base64\\nlibrary Base64 {\\n    string internal constant TABLE_ENCODE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';\\n    bytes  internal constant TABLE_DECODE = hex\\\"0000000000000000000000000000000000000000000000000000000000000000\\\"\\n                                            hex\\\"00000000000000000000003e0000003f3435363738393a3b3c3d000000000000\\\"\\n                                            hex\\\"00000102030405060708090a0b0c0d0e0f101112131415161718190000000000\\\"\\n                                            hex\\\"001a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132330000000000\\\";\\n\\n    function encode(bytes memory data) internal pure returns (string memory) {\\n        if (data.length == 0) return '';\\n\\n        // load the table into memory\\n        string memory table = TABLE_ENCODE;\\n\\n        // multiply by 4/3 rounded up\\n        uint256 encodedLen = 4 * ((data.length + 2) / 3);\\n\\n        // add some extra buffer at the end required for the writing\\n        string memory result = new string(encodedLen + 32);\\n\\n        assembly {\\n            // set the actual output length\\n            mstore(result, encodedLen)\\n\\n            // prepare the lookup table\\n            let tablePtr := add(table, 1)\\n\\n            // input ptr\\n            let dataPtr := data\\n            let endPtr := add(dataPtr, mload(data))\\n\\n            // result ptr, jump over length\\n            let resultPtr := add(result, 32)\\n\\n            // run over the input, 3 bytes at a time\\n            for {} lt(dataPtr, endPtr) {}\\n            {\\n                // read 3 bytes\\n                dataPtr := add(dataPtr, 3)\\n                let input := mload(dataPtr)\\n\\n                // write 4 characters\\n                mstore8(resultPtr, mload(add(tablePtr, and(shr(18, input), 0x3F))))\\n                resultPtr := add(resultPtr, 1)\\n                mstore8(resultPtr, mload(add(tablePtr, and(shr(12, input), 0x3F))))\\n                resultPtr := add(resultPtr, 1)\\n                mstore8(resultPtr, mload(add(tablePtr, and(shr( 6, input), 0x3F))))\\n                resultPtr := add(resultPtr, 1)\\n                mstore8(resultPtr, mload(add(tablePtr, and(        input,  0x3F))))\\n                resultPtr := add(resultPtr, 1)\\n            }\\n\\n            // padding with '='\\n            switch mod(mload(data), 3)\\n            case 1 { mstore(sub(resultPtr, 2), shl(240, 0x3d3d)) }\\n            case 2 { mstore(sub(resultPtr, 1), shl(248, 0x3d)) }\\n        }\\n\\n        return result;\\n    }\\n\\n    function decode(string memory _data) internal pure returns (bytes memory) {\\n        bytes memory data = bytes(_data);\\n\\n        if (data.length == 0) return new bytes(0);\\n        require(data.length % 4 == 0, \\\"invalid base64 decoder input\\\");\\n\\n        // load the table into memory\\n        bytes memory table = TABLE_DECODE;\\n\\n        // every 4 characters represent 3 bytes\\n        uint256 decodedLen = (data.length / 4) * 3;\\n\\n        // add some extra buffer at the end required for the writing\\n        bytes memory result = new bytes(decodedLen + 32);\\n\\n        assembly {\\n            // padding with '='\\n            let lastBytes := mload(add(data, mload(data)))\\n            if eq(and(lastBytes, 0xFF), 0x3d) {\\n                decodedLen := sub(decodedLen, 1)\\n                if eq(and(lastBytes, 0xFFFF), 0x3d3d) {\\n                    decodedLen := sub(decodedLen, 1)\\n                }\\n            }\\n\\n            // set the actual output length\\n            mstore(result, decodedLen)\\n\\n            // prepare the lookup table\\n            let tablePtr := add(table, 1)\\n\\n            // input ptr\\n            let dataPtr := data\\n            let endPtr := add(dataPtr, mload(data))\\n\\n            // result ptr, jump over length\\n            let resultPtr := add(result, 32)\\n\\n            // run over the input, 4 characters at a time\\n            for {} lt(dataPtr, endPtr) {}\\n            {\\n               // read 4 characters\\n               dataPtr := add(dataPtr, 4)\\n               let input := mload(dataPtr)\\n\\n               // write 3 bytes\\n               let output := add(\\n                   add(\\n                       shl(18, and(mload(add(tablePtr, and(shr(24, input), 0xFF))), 0xFF)),\\n                       shl(12, and(mload(add(tablePtr, and(shr(16, input), 0xFF))), 0xFF))),\\n                   add(\\n                       shl( 6, and(mload(add(tablePtr, and(shr( 8, input), 0xFF))), 0xFF)),\\n                               and(mload(add(tablePtr, and(        input , 0xFF))), 0xFF)\\n                    )\\n                )\\n                mstore(resultPtr, shl(232, output))\\n                resultPtr := add(resultPtr, 3)\\n            }\\n        }\\n\\n        return result;\\n    }\\n}\\n\",\"keccak256\":\"0xa73959e6ef0b693e4423a562e612370160b934a75e618361ddd8c9c4b8ddbaaf\",\"license\":\"MIT\"},\"contracts/test/TestSharedNFTLogic.sol\":{\"content\":\"// SPDX-License-Identifier: GPL-3.0\\npragma solidity 0.8.9;\\n\\nimport {SharedNFTLogic} from \\\"@zoralabs/nft-editions-contracts/contracts/SharedNFTLogic.sol\\\";\\n\\ncontract TestSharedNFTLogic is SharedNFTLogic {\\n\\n}\",\"keccak256\":\"0xb2cbce78eb6291aac7f0cf7cad2fb4c3f122e26b5fb9cfc29004796f5f6e9cda\",\"license\":\"GPL-3.0\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610cd7806100206000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c8063170dc6601461006757806358464f3014610090578063d01fde8c146100a3578063d5fb1b19146100b6578063df30dba0146100c9578063eb111ab6146100dc575b600080fd5b61007a610075366004610513565b6100ef565b6040516100879190610588565b60405180910390f35b61007a61009e366004610646565b610100565b61007a6100b13660046106df565b61017c565b61007a6100c43660046106df565b6101ad565b61007a6100d7366004610727565b6101b8565b61007a6100ea3660046107e5565b6101f0565b60606100fa826102a9565b92915050565b606080821561013457610112836100ef565b604051602001610122919061086d565b60405160208183030381529060405290505b8661013e856100ef565b82888861014a896100ef565b8c6040516020016101619796959493929190610896565b60405160208183030381529060405291505095945050505050565b6060610187826101ad565b60405160200161019791906109ba565b6040516020818303038152906040529050919050565b60606100fa826103ae565b606060006101c78686866101f0565b905060006101d88989848888610100565b90506101e38161017c565b9998505050505050505050565b825182516060911580159115159082906102075750805b1561024b5785610216856100ef565b86610220876100ef565b60405160200161023394939291906109ff565b604051602081830303815290604052925050506102a2565b811561026c578561025b856100ef565b604051602001610233929190610aba565b801561028d578461027c856100ef565b604051602001610233929190610b20565b60405180602001604052806000815250925050505b9392505050565b6060816102cd5750506040805180820190915260018152600360fc1b602082015290565b8160005b81156102f757806102e181610ba4565b91506102f09050600a83610bd5565b91506102d1565b6000816001600160401b038111156103115761031161059b565b6040519080825280601f01601f19166020018201604052801561033b576020820181803683370190505b5090505b84156103a657610350600183610be9565b915061035d600a86610c00565b610368906030610c14565b60f81b81838151811061037d5761037d610c2c565b60200101906001600160f81b031916908160001a90535061039f600a86610bd5565b945061033f565b949350505050565b60608151600014156103ce57505060408051602081019091526000815290565b6000604051806060016040528060408152602001610c6260409139905060006003845160026103fd9190610c14565b6104079190610bd5565b610412906004610c42565b90506000610421826020610c14565b6001600160401b038111156104385761043861059b565b6040519080825280601f01601f191660200182016040528015610462576020820181803683370190505b509050818152600183018586518101602084015b818310156104ce576003830192508251603f8160121c168501518253600182019150603f81600c1c168501518253600182019150603f8160061c168501518253600182019150603f8116850151825350600101610476565b6003895106600181146104e857600281146104f957610505565b613d3d60f01b600119830152610505565b603d60f81b6000198301525b509398975050505050505050565b60006020828403121561052557600080fd5b5035919050565b60005b8381101561054757818101518382015260200161052f565b83811115610556576000848401525b50505050565b6000815180845261057481602086016020860161052c565b601f01601f19169290920160200192915050565b6020815260006102a2602083018461055c565b634e487b7160e01b600052604160045260246000fd5b60006001600160401b03808411156105cb576105cb61059b565b604051601f8501601f19908116603f011681019082821181831017156105f3576105f361059b565b8160405280935085815286868601111561060c57600080fd5b858560208301376000602087830101525050509392505050565b600082601f83011261063757600080fd5b6102a2838335602085016105b1565b600080600080600060a0868803121561065e57600080fd5b85356001600160401b038082111561067557600080fd5b61068189838a01610626565b9650602088013591508082111561069757600080fd5b6106a389838a01610626565b955060408801359150808211156106b957600080fd5b506106c688828901610626565b9598949750949560608101359550608001359392505050565b6000602082840312156106f157600080fd5b81356001600160401b0381111561070757600080fd5b8201601f8101841361071857600080fd5b6103a6848235602084016105b1565b60008060008060008060c0878903121561074057600080fd5b86356001600160401b038082111561075757600080fd5b6107638a838b01610626565b9750602089013591508082111561077957600080fd5b6107858a838b01610626565b9650604089013591508082111561079b57600080fd5b6107a78a838b01610626565b955060608901359150808211156107bd57600080fd5b506107ca89828a01610626565b9350506080870135915060a087013590509295509295509295565b6000806000606084860312156107fa57600080fd5b83356001600160401b038082111561081157600080fd5b61081d87838801610626565b9450602086013591508082111561083357600080fd5b5061084086828701610626565b925050604084013590509250925092565b6000815161086381856020860161052c565b9290920192915050565b602f60f81b81526000825161088981600185016020870161052c565b9190910160010192915050565b693d913730b6b2911d101160b11b815287516000906108bc81600a850160208d0161052c565b600160fd1b600a9184019182015288516108dd81600b840160208d0161052c565b88519101906108f381600b840160208c0161052c565b631116101160e11b600b929091019182018190526e3232b9b1b934b83a34b7b7111d101160891b600f830152875161093281601e850160208c0161052c565b601e9201918201526109ac61099d61099761098061097a610956602287018c610851565b770383937b832b93a34b2b9911d103d91373ab6b132b9111d160451b815260180190565b89610851565b6a1610113730b6b2911d101160a91b8152600b0190565b86610851565b62227d7d60e81b815260030190565b9a9950505050505050505050565b7f646174613a6170706c69636174696f6e2f6a736f6e3b6261736536342c0000008152600082516109f281601d85016020870161052c565b91909101601d0192915050565b6834b6b0b3b2911d101160b91b81528451600090610a24816009850160208a0161052c565b8083019050633f69643d60e01b8060098301528651610a4a81600d850160208b0161052c565b741116101130b734b6b0ba34b7b72fbab936111d101160591b600d93909101928301528551610a80816022850160208a0161052c565b60229201918201528351610a9b81602684016020880161052c565b631116101160e11b60269290910191820152602a019695505050505050565b6834b6b0b3b2911d101160b91b81528251600090610adf81600985016020880161052c565b633f69643d60e01b6009918401918201528351610b0381600d84016020880161052c565b631116101160e11b600d9290910191820152601101949350505050565b7030b734b6b0ba34b7b72fbab936111d101160791b81528251600090610b4d81601185016020880161052c565b633f69643d60e01b6011918401918201528351610b7181601584016020880161052c565b631116101160e11b60159290910191820152601901949350505050565b634e487b7160e01b600052601160045260246000fd5b6000600019821415610bb857610bb8610b8e565b5060010190565b634e487b7160e01b600052601260045260246000fd5b600082610be457610be4610bbf565b500490565b600082821015610bfb57610bfb610b8e565b500390565b600082610c0f57610c0f610bbf565b500690565b60008219821115610c2757610c27610b8e565b500190565b634e487b7160e01b600052603260045260246000fd5b6000816000190483118215151615610c5c57610c5c610b8e565b50029056fe4142434445464748494a4b4c4d4e4f505152535455565758595a6162636465666768696a6b6c6d6e6f707172737475767778797a303132333435363738392b2fa264697066735822122087e1e0a2fa0d37da3c784fe176358cf032714f29d9654b0a0b9451b2b1919f2b64736f6c63430008090033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100625760003560e01c8063170dc6601461006757806358464f3014610090578063d01fde8c146100a3578063d5fb1b19146100b6578063df30dba0146100c9578063eb111ab6146100dc575b600080fd5b61007a610075366004610513565b6100ef565b6040516100879190610588565b60405180910390f35b61007a61009e366004610646565b610100565b61007a6100b13660046106df565b61017c565b61007a6100c43660046106df565b6101ad565b61007a6100d7366004610727565b6101b8565b61007a6100ea3660046107e5565b6101f0565b60606100fa826102a9565b92915050565b606080821561013457610112836100ef565b604051602001610122919061086d565b60405160208183030381529060405290505b8661013e856100ef565b82888861014a896100ef565b8c6040516020016101619796959493929190610896565b60405160208183030381529060405291505095945050505050565b6060610187826101ad565b60405160200161019791906109ba565b6040516020818303038152906040529050919050565b60606100fa826103ae565b606060006101c78686866101f0565b905060006101d88989848888610100565b90506101e38161017c565b9998505050505050505050565b825182516060911580159115159082906102075750805b1561024b5785610216856100ef565b86610220876100ef565b60405160200161023394939291906109ff565b604051602081830303815290604052925050506102a2565b811561026c578561025b856100ef565b604051602001610233929190610aba565b801561028d578461027c856100ef565b604051602001610233929190610b20565b60405180602001604052806000815250925050505b9392505050565b6060816102cd5750506040805180820190915260018152600360fc1b602082015290565b8160005b81156102f757806102e181610ba4565b91506102f09050600a83610bd5565b91506102d1565b6000816001600160401b038111156103115761031161059b565b6040519080825280601f01601f19166020018201604052801561033b576020820181803683370190505b5090505b84156103a657610350600183610be9565b915061035d600a86610c00565b610368906030610c14565b60f81b81838151811061037d5761037d610c2c565b60200101906001600160f81b031916908160001a90535061039f600a86610bd5565b945061033f565b949350505050565b60608151600014156103ce57505060408051602081019091526000815290565b6000604051806060016040528060408152602001610c6260409139905060006003845160026103fd9190610c14565b6104079190610bd5565b610412906004610c42565b90506000610421826020610c14565b6001600160401b038111156104385761043861059b565b6040519080825280601f01601f191660200182016040528015610462576020820181803683370190505b509050818152600183018586518101602084015b818310156104ce576003830192508251603f8160121c168501518253600182019150603f81600c1c168501518253600182019150603f8160061c168501518253600182019150603f8116850151825350600101610476565b6003895106600181146104e857600281146104f957610505565b613d3d60f01b600119830152610505565b603d60f81b6000198301525b509398975050505050505050565b60006020828403121561052557600080fd5b5035919050565b60005b8381101561054757818101518382015260200161052f565b83811115610556576000848401525b50505050565b6000815180845261057481602086016020860161052c565b601f01601f19169290920160200192915050565b6020815260006102a2602083018461055c565b634e487b7160e01b600052604160045260246000fd5b60006001600160401b03808411156105cb576105cb61059b565b604051601f8501601f19908116603f011681019082821181831017156105f3576105f361059b565b8160405280935085815286868601111561060c57600080fd5b858560208301376000602087830101525050509392505050565b600082601f83011261063757600080fd5b6102a2838335602085016105b1565b600080600080600060a0868803121561065e57600080fd5b85356001600160401b038082111561067557600080fd5b61068189838a01610626565b9650602088013591508082111561069757600080fd5b6106a389838a01610626565b955060408801359150808211156106b957600080fd5b506106c688828901610626565b9598949750949560608101359550608001359392505050565b6000602082840312156106f157600080fd5b81356001600160401b0381111561070757600080fd5b8201601f8101841361071857600080fd5b6103a6848235602084016105b1565b60008060008060008060c0878903121561074057600080fd5b86356001600160401b038082111561075757600080fd5b6107638a838b01610626565b9750602089013591508082111561077957600080fd5b6107858a838b01610626565b9650604089013591508082111561079b57600080fd5b6107a78a838b01610626565b955060608901359150808211156107bd57600080fd5b506107ca89828a01610626565b9350506080870135915060a087013590509295509295509295565b6000806000606084860312156107fa57600080fd5b83356001600160401b038082111561081157600080fd5b61081d87838801610626565b9450602086013591508082111561083357600080fd5b5061084086828701610626565b925050604084013590509250925092565b6000815161086381856020860161052c565b9290920192915050565b602f60f81b81526000825161088981600185016020870161052c565b9190910160010192915050565b693d913730b6b2911d101160b11b815287516000906108bc81600a850160208d0161052c565b600160fd1b600a9184019182015288516108dd81600b840160208d0161052c565b88519101906108f381600b840160208c0161052c565b631116101160e11b600b929091019182018190526e3232b9b1b934b83a34b7b7111d101160891b600f830152875161093281601e850160208c0161052c565b601e9201918201526109ac61099d61099761098061097a610956602287018c610851565b770383937b832b93a34b2b9911d103d91373ab6b132b9111d160451b815260180190565b89610851565b6a1610113730b6b2911d101160a91b8152600b0190565b86610851565b62227d7d60e81b815260030190565b9a9950505050505050505050565b7f646174613a6170706c69636174696f6e2f6a736f6e3b6261736536342c0000008152600082516109f281601d85016020870161052c565b91909101601d0192915050565b6834b6b0b3b2911d101160b91b81528451600090610a24816009850160208a0161052c565b8083019050633f69643d60e01b8060098301528651610a4a81600d850160208b0161052c565b741116101130b734b6b0ba34b7b72fbab936111d101160591b600d93909101928301528551610a80816022850160208a0161052c565b60229201918201528351610a9b81602684016020880161052c565b631116101160e11b60269290910191820152602a019695505050505050565b6834b6b0b3b2911d101160b91b81528251600090610adf81600985016020880161052c565b633f69643d60e01b6009918401918201528351610b0381600d84016020880161052c565b631116101160e11b600d9290910191820152601101949350505050565b7030b734b6b0ba34b7b72fbab936111d101160791b81528251600090610b4d81601185016020880161052c565b633f69643d60e01b6011918401918201528351610b7181601584016020880161052c565b631116101160e11b60159290910191820152601901949350505050565b634e487b7160e01b600052601160045260246000fd5b6000600019821415610bb857610bb8610b8e565b5060010190565b634e487b7160e01b600052601260045260246000fd5b600082610be457610be4610bbf565b500490565b600082821015610bfb57610bfb610b8e565b500390565b600082610c0f57610c0f610bbf565b500690565b60008219821115610c2757610c27610b8e565b500190565b634e487b7160e01b600052603260045260246000fd5b6000816000190483118215151615610c5c57610c5c610b8e565b50029056fe4142434445464748494a4b4c4d4e4f505152535455565758595a6162636465666768696a6b6c6d6e6f707172737475767778797a303132333435363738392b2fa264697066735822122087e1e0a2fa0d37da3c784fe176358cf032714f29d9654b0a0b9451b2b1919f2b64736f6c63430008090033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "base64Encode(bytes)": {
+        "params": {
+          "unencoded": "bytes to base64-encode"
+        }
+      },
+      "createMetadataEdition(string,string,string,string,uint256,uint256)": {
+        "params": {
+          "animationUrl": "URL of animation to render for edition",
+          "description": "Description of NFT in metadata",
+          "editionSize": "Size of entire edition to show",
+          "imageUrl": "URL of image to render for edition",
+          "name": "Name of NFT in metadata",
+          "tokenOfEdition": "Token ID for specific token"
+        }
+      },
+      "createMetadataJSON(string,string,string,uint256,uint256)": {
+        "params": {
+          "description": "Description of NFT in metadata",
+          "editionSize": "Size of entire edition to show",
+          "mediaData": "Data for media to include in json object",
+          "name": "Name of NFT in metadata",
+          "tokenOfEdition": "Token ID for specific token"
+        }
+      },
+      "encodeMetadataJSON(bytes)": {
+        "params": {
+          "json": "Raw json to base64 and turn into a data-uri"
+        }
+      },
+      "numberToString(uint256)": {
+        "params": {
+          "value": "number to return as a string"
+        }
+      },
+      "tokenMediaData(string,string,uint256)": {
+        "params": {
+          "animationUrl": "URL of animation to render for edition",
+          "imageUrl": "URL of image to render for edition"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "createMetadataEdition(string,string,string,string,uint256,uint256)": {
+        "notice": "Generate edition metadata from storage information as base64-json blob Combines the media data and metadata"
+      },
+      "createMetadataJSON(string,string,string,uint256,uint256)": {
+        "notice": "Function to create the metadata json string for the nft edition"
+      },
+      "encodeMetadataJSON(bytes)": {
+        "notice": "Encodes the argument json bytes into base64-data uri format"
+      },
+      "numberToString(uint256)": {
+        "notice": "Proxy to openzeppelin's toString function"
+      },
+      "tokenMediaData(string,string,uint256)": {
+        "notice": "Generates edition metadata from storage information as base64-json blob Combines the media data and metadata"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
