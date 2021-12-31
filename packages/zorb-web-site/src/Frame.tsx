@@ -162,8 +162,9 @@ export const Frame = () => {
                 <a target="_blank" className={css`
                 text-decoration: none; 
                 color: white;
+                white-space: pre;
                 `} href={`http://etherscan.io/address/${ZORB_CONTRACT}`}>
-                  {ZORB_CONTRACT}↗
+                  {ZORB_CONTRACT}<span className={css`font-family: Inter;`}> ↗</span>
                 </a>
               </dd>
               <dt>№ minted</dt>
@@ -171,9 +172,9 @@ export const Frame = () => {
               <dt>price</dt>
               <dd>Free. Just pay gas.</dd>
               <dt>starts</dt>
-              <dd>Jan 1<sup>st</sup> 2022, 0:00 UTC</dd>
+              <dd>Jan 1<sup>st</sup> 2022, 0:00 EST</dd>
               <dt>ends</dt>
-              <dd>Jan 2<sup>nd</sup> 2022, 20:00 UTC</dd>
+              <dd>Jan 2<sup>nd</sup> 2022, 20:00 EST</dd>
             </dl>
           </RoundedContainer>
         </div>

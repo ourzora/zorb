@@ -48,6 +48,11 @@ describe("ZorbNFT", () => {
   });
 
   it("hides from marketplace transfers", async () => {
+    // open sale
+    const START_TIME = 1640995200;
+    await network.provider.send("evm_setNextBlockTimestamp", [START_TIME]);
+    await network.provider.send("evm_mine");
+    // end time update
     await childNft.airdrop([signerAddress]);
     await childNft.setKnownMarketplaces([signer2Address], true);
     await childNft.transferFrom(signerAddress, signer2Address, 1);
@@ -59,9 +64,7 @@ describe("ZorbNFT", () => {
     expect(await childNft.getZorbRenderAddress(1)).to.be.equal(signer3Address);
   });
 
-  it("allows batch airdrop mint for admin", async () => {
-    await childNft.airdrop([signerAddress]);
-    expect(await childNft.ownerOf(1)).to.be.equal(signerAddress);
+  it("not not allow batch airdrop mint for admin", async () => {
     await expect(
       childNft.connect(signer2).airdrop([signerAddress])
     ).to.be.revertedWith("Mint not open");

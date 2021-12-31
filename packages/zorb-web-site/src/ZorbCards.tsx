@@ -7,13 +7,17 @@ import { sliceAddress } from "./eth-utils";
 const ZorbCard = ({ result }: { result: any }) => {
   return (
     <RoundedContainer padding="5px">
-      <div
+      <a
+        href={`https://${
+          NETWORK_ID === "4" ? "rinkeby." : ""
+        }zora.co/collections/${ZORB_CONTRACT}/${result.tokenId}`}
+        target="_blank"
+        title="View on Zora"
         className={css`
-          padding: 10px;
         `}
       >
         <img src={result.metadata.json.image} />
-      </div>
+      </a>
       <div
         className={css`
           margin-top: 20px;
@@ -42,7 +46,7 @@ const ZorbCard = ({ result }: { result: any }) => {
               text-transform: uppercase;
               font-feature-settings: "zero" on;
 
-              color: #F6F6F6;
+              color: #f6f6f6;
             `}
           >
             Zorb #{result.tokenId}
@@ -126,9 +130,11 @@ export const ZorbCards = () => {
         }
       `}
     >
-      {results.filter((r) => r.metadata?.json).map((result) => (
-        <ZorbCard key={result.tokenId} result={result} />
-      ))}
+      {results
+        .filter((r) => r.metadata?.json)
+        .map((result) => (
+          <ZorbCard key={result.tokenId} result={result} />
+        ))}
     </div>
   );
 };

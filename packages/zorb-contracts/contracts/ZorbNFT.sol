@@ -138,10 +138,10 @@ contract ZorbNFT is ERC721, Ownable {
         return currentTokenId.current() - 1;
     }
 
-    /// Public or admin airdrop of tokens to _other_ addresses
+    /// Public airdrop of tokens to _other_ addresses
     /// @param to list of addresses to airdrop to
     function airdrop(address[] memory to) public {
-        require(mintIsOpen() || msg.sender == owner(), "Mint not open");
+        require(mintIsOpen(), "Mint not open");
         for (uint256 i = 0; i < to.length; i++) {
             _mint(to[i], currentTokenId.current());
             currentTokenId.increment();
@@ -217,10 +217,10 @@ contract ZorbNFT is ERC721, Ownable {
         return
             sharedMetadata.encodeMetadataJSON(
                 abi.encodePacked(
-                    '{"name": "Zora Zorb #',
+                    '{"name": "Zorb #',
                     sharedMetadata.numberToString(tokenId),
                     '", "description": "Zora Zorb New Years Drop 2022',
-                    '\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.dev/](zorb.dev)\\n\\nWhen Zorbs are sold or transferred, they update to reflect the zorb of the current owner.", "image": "',
+                    '\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.dev/](zorb.dev)\\n\\nWhen Zorbs are sold or transferred, they morph into the Zorb of the current owner.", "image": "',
                     zorbForAddress(getZorbRenderAddress(tokenId)),
                     '"}'
                 )

@@ -140,6 +140,7 @@ export const MintButton = ({}) => {
               rgba(18, 89, 181, 0.2) 94.98%
             );
             border-radius: 4px;
+            text-align: center;
           `}
         >
           <img
@@ -239,7 +240,7 @@ export const MintButton = ({}) => {
       </ModalActionLayout>
       <div
         className={css`
-          margin-top: 10px;
+          margin-top: 20px;
           display: flex;
           align-items: center;
         `}
