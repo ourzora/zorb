@@ -49,7 +49,7 @@ const ZorbCard = ({ result }: { result: any }) => {
               color: #f6f6f6;
             `}
           >
-            Zorb #{result.tokenId}
+            {result.metadata.json.name}
           </div>
           <a
             title="View owner on Zora"

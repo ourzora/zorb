@@ -6,6 +6,8 @@ import { RoundedContainer } from "./RoundedContainer";
 import { ZORB_CONTRACT } from "./env-vars";
 import { MintButton } from "./MintButton";
 import { NumberMinted } from "./NumberMinted";
+import { format } from "date-fns";
+import { END_UNIX_TIME, START_UNIX_TIME } from "./mint-status";
 
 export const Frame = () => {
   const [theme, setTheme] = useState("light");
@@ -43,7 +45,7 @@ export const Frame = () => {
             npm i{" "}
           </span>
           <span>@zoralabs/zorb</span> */}
-          on-chain zorb
+          on-chain ZORB
         </code>
         <a target="_BLANK" href="https://github.com/ourzora/zorb">
           <Octo />
@@ -172,9 +174,11 @@ export const Frame = () => {
               <dt>price</dt>
               <dd>Free. Just pay gas.</dd>
               <dt>starts</dt>
-              <dd>Jan 1<sup>st</sup> 2022, 0:00 EST</dd>
+              <dd>{format(new Date(START_UNIX_TIME*1000), 'MMM dd yyyy, HH:mm:ss zzz')}</dd>
+              {/* <dd>Jan 1<sup>st</sup> 2022, 0:00 EST</dd> */}
               <dt>ends</dt>
-              <dd>Jan 2<sup>nd</sup> 2022, 20:00 EST</dd>
+              <dd>{format(new Date(END_UNIX_TIME*1000), 'MMM dd yyyy, HH:mm:ss zzz')}</dd>
+              {/* <dd>Jan 2<sup>nd</sup> 2022, 20:00 EST</dd> */}
             </dl>
           </RoundedContainer>
         </div>
