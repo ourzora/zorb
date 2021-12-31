@@ -64,19 +64,33 @@ describe("ZorbNFT", () => {
     expect(await childNft.ownerOf(1)).to.be.equal(signerAddress);
     await expect(
       childNft.connect(signer2).airdrop([signerAddress])
-    ).to.be.revertedWith("Ownable: caller is not the owner");
+    ).to.be.revertedWith("Mint not open");
   });
 
   it("allows minting in window", async () => {
-    new Date(2021, )
-    await childNft.airdrop([signerAddress]);
-    expect(await childNft.ownerOf(1)).to.be.equal(signerAddress);
+    
+    await expect(childNft.connect(signer2).mint()).to.be.revertedWith('Mint not open');
+    await expect(childNft.connect(signer2).airdrop([signerAddress])).to.be.revertedWith('Mint not open');
+    const START_TIME = 1640995200;
+    await network.provider.send("evm_setNextBlockTimestamp", [START_TIME]);
+    await network.provider.send("evm_mine");
+    await childNft.connect(signer2).mint();
+    expect(await childNft.ownerOf(1)).to.be.equal(signer2Address);
+    await childNft.connect(signer2).airdrop([signerAddress]);
+    expect(await childNft.ownerOf(2)).to.be.equal(signerAddress);
+    const END_TIME = 1840995200;
+    await network.provider.send("evm_setNextBlockTimestamp", [END_TIME]);
+    await network.provider.send("evm_mine");
+
+    await expect(childNft.connect(signer2).mint()).to.be.revertedWith('Mint not open');
+    await expect(childNft.connect(signer2).airdrop([signerAddress])).to.be.revertedWith('Mint not open');
+
     await expect(
       childNft.connect(signer2).airdrop([signerAddress])
-    ).to.be.revertedWith("Ownable: caller is not the owner");
+    ).to.be.revertedWith("Mint not open");
   });
 
-  it.only("renders", async () => {
+  it("renders", async () => {
     const signers = await ethers.getSigners();
     await network.provider.send("evm_setNextBlockTimestamp", [1640995200]);
     await network.provider.send("evm_mine");
