@@ -96,7 +96,7 @@ export const Frame = () => {
                 zorb
               </code>
               , we invite you to mint a commemorative NFT for your collection.
-              Minting is open for 24 hours on New Years Day and cements your
+              Minting is open for <code className={css`font-family: 'DM Mono'`}>20+22</code> hours on New Years Day and cements your
               status as an early supporter of Zora.
             </p>
             <MintButton />

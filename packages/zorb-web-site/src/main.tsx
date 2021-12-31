@@ -11,7 +11,10 @@ import { Web3Theme } from "./Web3Theme";
 const SetStyles = ({ children }: any) => (
   <div
     className={css`
+      p, dl { margin: 0; }
       font-family: "Inter", "system-ui";
+
+      -webkit-font-smoothing: antialiased;
 
       @supports (font-variation-settings: normal) {
         font-family: "Inter var", "system-ui";

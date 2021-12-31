@@ -1,25 +1,19 @@
-import { formatDistance } from "date-fns";
+import {
+  formatDistanceStrict,
+  formatDuration,
+  intervalToDuration,
+} from "date-fns";
 import { useEffect, useState } from "react";
+import {
+  END_UNIX_TIME,
+  getStatus,
+  START_UNIX_TIME,
+  Status,
+} from "./mint-status";
 
-const START_UNIX_TIME = 1640995200;
-const END_UNIX_TIME = START_UNIX_TIME + 60 * 60 * 24;
-
-enum Status {
-  OPEN,
-  NOT_STARTED,
-  FINISHED,
+const FORMAT_OPTIONS = {
+  format: ["years", "months", "weeks", "days", "hours", "minutes"],
 };
-
-function getStatus() {
-  const nowUnix = Math.floor((new Date()).getTime()/1000);
-  if (START_UNIX_TIME >= nowUnix && END_UNIX_TIME <= nowUnix) {
-    return Status.OPEN;
-  }
-  if (nowUnix >= START_UNIX_TIME) {
-    return Status.FINISHED;
-  }
-  return Status.NOT_STARTED;
-}
 
 export const TimeLeft = () => {
   const [baseDate, setBaseDate] = useState(() => new Date());
@@ -34,14 +28,36 @@ export const TimeLeft = () => {
     };
   }, [setBaseDate]);
 
-  return (
-    <>
-    {status === Status.NOT_STARTED && 'starts in '}
-      {formatDistance(new Date(END_UNIX_TIME * 1000), baseDate, {
-        includeSeconds: true,
-        addSuffix: false,
-      })}
-      {' '}{status === Status.OPEN && 'left'}
-    </>
-  );
+  if (status === Status.NOT_STARTED) {
+    return (
+      <>
+        {" "}
+        starts in{" "}
+        {formatDuration(
+          intervalToDuration({
+            end: new Date(START_UNIX_TIME * 1000),
+            start: baseDate,
+          }),
+          FORMAT_OPTIONS
+        )}{" "}
+      </>
+    );
+  }
+
+  if (status === Status.OPEN) {
+    return (
+      <>
+        {formatDuration(
+          intervalToDuration({
+            end: new Date(END_UNIX_TIME * 1000),
+            start: baseDate,
+          }),
+          FORMAT_OPTIONS
+        )}{" "}
+        left
+      </>
+    );
+  }
+
+  return <>Sale finished</>;
 };
