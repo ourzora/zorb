@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./public"
   },
   "dependencies": {
     "@emotion/css": "^11.7.1",
