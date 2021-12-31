@@ -239,6 +239,7 @@ export const MintButton = ({}) => {
       </ModalActionLayout>
       <div
         className={css`
+          margin-top: 10px;
           display: flex;
           align-items: center;
         `}
