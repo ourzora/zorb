@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/css";
 import Octo from "./octo";
 import { ZorbCards } from "./ZorbCards";
 import { RoundedContainer } from "./RoundedContainer";
 import { ZORB_CONTRACT } from "./env-vars";
-import { TimeLeft } from "./TimeLeft";
+import { MintButton } from "./MintButton";
 
 export const Frame = () => {
   const [theme, setTheme] = useState("light");
+
   return (
     <div
       className={css`
@@ -96,50 +97,7 @@ export const Frame = () => {
               Minting is open for 24 hours on New Years Day and cements your
               status as an early supporter of Zora.
             </p>
-            <div
-              className={css`
-                display: flex;
-                align-items: center;
-              `}
-            >
-              <button
-                className={css`
-                  background: #f6f6f6;
-                  border-radius: 4px;
-
-                  font-family: Inter;
-                  font-style: normal;
-                  font-weight: 600;
-                  font-size: 16px;
-                  line-height: 25px;
-                  color: #000;
-
-                  padding: 17px 31px;
-                  border: 0;
-                  cursor: pointer;
-                `}
-              >
-                Mint now
-              </button>
-              <div
-                className={css`
-                  margin-left: 25px;
-                  font-family: Inter;
-                  font-style: normal;
-                  font-weight: normal;
-                  font-size: 16px;
-                  line-height: 25px;
-
-                  /* identical to box height, or 156% */
-
-                  color: #f6f6f6;
-
-                  opacity: 0.5;
-                `}
-              >
-                <TimeLeft />
-              </div>
-            </div>
+            <MintButton />
           </RoundedContainer>
           <div
             className={css`
@@ -164,6 +122,8 @@ export const Frame = () => {
                   font-weight: 500;
                   font-size: 12px;
                   line-height: 20px;
+
+                  white-space: nowrap;
 
                   /* identical to box height, or 167% */
                   letter-spacing: 0.05em;
