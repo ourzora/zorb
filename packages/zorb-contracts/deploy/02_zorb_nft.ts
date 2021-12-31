@@ -21,4 +21,4 @@ module.exports = async ({ getNamedAccounts, deployments }: any) => {
   });
 };
 module.exports.tags = ["ZorbNFT"];
-module.exports.dependencies = ["BaseTestContract", "TestSharedNFTLogic"];
+module.exports.dependencies = ["TestSharedNFTLogic"];

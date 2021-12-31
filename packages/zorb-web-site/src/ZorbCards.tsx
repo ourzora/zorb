@@ -1,17 +1,8 @@
-import "@zoralabs/zorb-web-component/dist/zorb-web-component.es";
-import 'web-component-essentials';
 import { useNFTIndexerQuery, useNFTType } from "@zoralabs/nft-hooks";
 import { RoundedContainer } from "./RoundedContainer";
 import { css } from "@emotion/css";
 import { ZORB_CONTRACT, NETWORK_ID } from "./env-vars";
-
-const sliceAddress = (address: string) => {
-  const showChars = 4;
-  const PREFIX_ADDRESS = "0x";
-  const addressFirst = address.slice(0, showChars + PREFIX_ADDRESS.length);
-  const addressLast = address.slice(address.length - showChars);
-  return `${addressFirst}...${addressLast}`;
-};
+import { sliceAddress } from "./eth-utils";
 
 const ZorbCard = ({ result }: { result: any }) => {
   return (
@@ -21,8 +12,7 @@ const ZorbCard = ({ result }: { result: any }) => {
           padding: 10px;
         `}
       >
-        <zora-zorb input={result.owner.toString()}></zora-zorb>
-        <zora-zorb address={'0x0djfajsdfkja'}></zora-zorb>
+        <img src={result.metadata.json.image} />
       </div>
       <div
         className={css`
@@ -128,11 +118,15 @@ export const ZorbCards = () => {
     <div
       className={css`
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto;
         grid-gap: 30px;
+
+        @media only screen and (min-width: 800px) {
+          grid-template-columns: auto auto auto;
+        }
       `}
     >
-      {results.map((result) => (
+      {results.filter((r) => r.metadata?.json).map((result) => (
         <ZorbCard key={result.tokenId} result={result} />
       ))}
     </div>
