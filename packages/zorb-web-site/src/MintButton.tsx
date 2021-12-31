@@ -28,9 +28,7 @@ const MintModalContent = ({ setError }: any) => {
 
   const doMint = useCallback(async () => {
     try {
-      const minting = await contract
-        .connect(await library.getSigner())
-        .adminMint("0xfB843f8c4992EfDb6b42349C35f025ca55742D33");
+      const minting = await contract.connect(await library.getSigner()).mint();
       await minting.wait();
       openModalByName("success");
     } catch (e) {
