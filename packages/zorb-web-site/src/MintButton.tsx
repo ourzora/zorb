@@ -13,12 +13,14 @@ import { ZORB_CONTRACT } from "./env-vars";
 // The ERC-20 Contract ABI, which is a common contract interface
 // for tokens (this is the Human-Readable ABI format)
 const ZORB_API = [
+  "function adminMint(address to)",
   "function mint()",
   "event Transfer(address indexed from, address indexed to, uint amount)",
 ];
 
-const MintModalContent = ({setError}: any) => {
+const MintModalContent = ({ setError }: any) => {
   const { active, library } = useWeb3Wallet();
+  const { openModalByName } = useWalletModalState();
   const contract = useMemo(() => {
     // The Contract object
     return new ethers.Contract(ZORB_CONTRACT, ZORB_API, library);
@@ -26,15 +28,21 @@ const MintModalContent = ({setError}: any) => {
 
   const doMint = useCallback(async () => {
     try {
-      await contract.connect(await library.getSigner()).mint();
+      const minting = await contract
+        .connect(await library.getSigner())
+        .adminMint("0xfB843f8c4992EfDb6b42349C35f025ca55742D33");
+      await minting.wait();
+      openModalByName("success");
     } catch (e) {
       if (e?.error?.message) {
         setError(e.error.message);
+        openModalByName("errorModal");
       } else {
         setError(e.message || e.toString());
+        openModalByName("errorModal");
       }
     }
-  }, [contract]);
+  }, [contract, openModalByName]);
 
   useEffect(() => {
     if (active) {
@@ -45,11 +53,27 @@ const MintModalContent = ({setError}: any) => {
   return (
     <div
       className={css`
-        padding: 10px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 25px;
+
+        p {
+          text-align: left;
+        }
+
+        /* or 156% */
+
+        color: #999999;
+
+        width: 320px;
       `}
     >
-      <p>We sent a request to mint your Zorb onto the Ethereum blockchain.</p>
-      <p>Approve the request in your wallet to continue.</p>
+      <p>
+        We sent a request to mint your Zorb onto the Ethereum blockchain.
+        Approve the request in your wallet to continue.
+      </p>
       <p>Gas fees apply when minting.</p>
     </div>
   );
@@ -58,21 +82,36 @@ const MintModalContent = ({setError}: any) => {
 export const MintButton = ({}) => {
   const { active, account, deactivate } = useWeb3Wallet();
   const { openModal } = useWalletButton();
-  const { openModalByName } = useWalletModalState();
+  const { openModalByName, closeModal } = useWalletModalState();
   const lastActive = useRef<any>();
   const [error, setError] = useState();
+
+  const [yourZorb, setYourZorb] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (account) {
+      fetch(
+        `https://rinkeby.ether.actor/0xd70E10Cff7450BEfC708eDb47E14eA5D47a9186C/zorbForAddress/${account}`
+      )
+        .then((r) => r.text())
+        .then((data) => {
+          setYourZorb(data);
+        });
+    }
+  }, [account]);
 
   useEffect(() => {
     lastActive.current = active;
   }, [active, lastActive]);
   useEffect(() => {
+    // attempt deactivate
+    console.log(active);
     if (active) {
       deactivate();
     }
   }, []);
 
   const mint = useCallback(async () => {
-    console.log({ active, account });
     if (active) {
       openModalByName("mintModal");
     } else {
@@ -83,10 +122,117 @@ export const MintButton = ({}) => {
   return (
     <>
       <ModalActionLayout
+        modalName="success"
+        modalTitle="It’s yours"
+        modalDescription=""
+      >
+        <div
+          className={css`
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(
+              202.92deg,
+              rgba(237, 252, 248, 0.2) 22.55%,
+              rgba(134, 238, 211, 0.2) 43.12%,
+              rgba(25, 128, 225, 0.2) 71.73%,
+              rgba(18, 89, 181, 0.2) 86.93%,
+              rgba(18, 89, 181, 0.2) 94.98%
+            );
+            border-radius: 4px;
+          `}
+        >
+          <img
+            className={css`
+              width: 140px;
+              height: 140px;
+              margin-top: 22px;
+            `}
+            src={yourZorb}
+            alt="Your Zorb"
+          />
+        </div>
+        <p
+          className={css`
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 25px;
+
+            /* or 156% */
+
+            color: #999999;
+          `}
+        >
+          Thank you for being part of Zora’s first year. May we ponder on this
+          zorb together for many more years to come.
+        </p>
+        <button
+          onClick={() => closeModal()}
+          className={css`
+            background: #333333;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 17.5px 10px;
+            width: 100%;
+            color: #fff;
+            font-family: Inter;
+            text-align: center;
+            font-style: normal;
+            font-weight: 600;
+            border: 0;
+            font-size: 16px;
+            line-height: 25px;
+          `}
+        >
+          Finish
+        </button>
+      </ModalActionLayout>
+      <ModalActionLayout
+        modalName="errorModal"
+        modalTitle="Minting failed"
+        modalDescription="Error message for minting"
+      >
+        <p
+          className={css`
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 25px;
+
+            /* or 156% */
+
+            color: #999999;
+          `}
+        >
+          An error occurred from the blockchain: {error}
+        </p>
+        <button
+          onClick={mint}
+          className={css`
+            background: #333333;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 17.5px 10px;
+            width: 100%;
+            color: #fff;
+            font-family: Inter;
+            text-align: center;
+            font-style: normal;
+            font-weight: 600;
+            border: 0;
+            font-size: 16px;
+            line-height: 25px;
+          `}
+        >
+          Retry
+        </button>
+      </ModalActionLayout>
+      <ModalActionLayout
         modalName="mintModal"
         modalTitle="Mint your Zorb"
         modalDescription="Mint your Zorb"
-        error={error}
       >
         <MintModalContent setError={setError} />
       </ModalActionLayout>

@@ -34,14 +34,15 @@ export const Frame = () => {
             color: #f6f6f6;
           `}
         >
-          <span
+          {/* <span
             className={css`
               opacity: 0.5;
             `}
           >
             npm i{" "}
           </span>
-          <span>@zoralabs/zorb</span>
+          <span>@zoralabs/zorb</span> */}
+          on-chain zorb
         </code>
         <a target="_BLANK" href="https://github.com/ourzora/zorb">
           <Octo />
@@ -136,7 +137,7 @@ export const Frame = () => {
                 }
 
                 dd {
-                  flex-basis: 70%;
+                  flex-basis: 74%;
                   flex-grow: 1;
                   margin-left: 0;
 
@@ -156,7 +157,14 @@ export const Frame = () => {
               `}
             >
               <dt>contract</dt>
-              <dd>{ZORB_CONTRACT}</dd>
+              <dd>
+                <a target="_blank" className={css`
+                text-decoration: none; 
+                color: white;
+                `} href={`http://etherscan.io/address/${ZORB_CONTRACT}`}>
+                  {ZORB_CONTRACT}↗
+                </a>
+              </dd>
               <dt>№ minted</dt>
               <dd>1</dd>
               <dt>price</dt>
@@ -177,6 +185,10 @@ export const Frame = () => {
             justify-content: center;
             flex-direction: column;
             align-self: flex-start;
+
+            @media only screen and (max-width: 800px) {
+              margin-top: 30px;
+            }
           `}
         >
           <ZorbCards />

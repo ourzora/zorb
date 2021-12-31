@@ -118,11 +118,15 @@ export const ZorbCards = () => {
     <div
       className={css`
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto;
         grid-gap: 30px;
+
+        @media only screen and (min-width: 800px) {
+          grid-template-columns: auto auto auto;
+        }
       `}
     >
-      {results.map((result) => (
+      {results.filter((r) => r.metadata?.json).map((result) => (
         <ZorbCard key={result.tokenId} result={result} />
       ))}
     </div>
