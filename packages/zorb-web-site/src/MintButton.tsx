@@ -232,7 +232,7 @@ export const MintButton = ({}) => {
       </ModalActionLayout>
       <ModalActionLayout
         modalName="mintModal"
-        modalTitle="Mint your Zorb"
+        modalTitle="Approve minting request"
         modalDescription="Mint your Zorb"
       >
         <MintModalContent setError={setError} />

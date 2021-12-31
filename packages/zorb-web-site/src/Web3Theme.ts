@@ -14,6 +14,11 @@ export const Web3Theme = {
     pointer-events: all;
 
     width: 380px;
+    max-width: calc(100vw - 56px);
+  `,
+  modalContent: css`
+    ${Theme.modalContent}
+    min-height: 100vh;
   `,
   modalHeader: css`
     ${Theme.modalHeader}
@@ -32,29 +37,27 @@ export const Web3Theme = {
   `,
   walletOptionsWrapper: css``,
   walletOptionsList: css``,
-  // attempted blur
-  // dialogOverlay: css`
-  // position: fixed;
-  // top: 0;
-  // right: 0;
-  // bottom: 0;
-  // left: 0;
-  // padding: 0;
-  // margin: 0;
-  // z-index: 99999999;
-  // overflow: auto;
-  // background: rgba(0, 0, 0, 0.5);
-  // backdrop-filter: blur(10px);
-  // `,
+  dialogOverlay: css`
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 99999999;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+  `,
   walletError: css`
-  font-family: Inter;
-  color: white;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 25px;
-  text-align: center;
-
+    font-family: Inter;
+    color: white;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
   `,
   walletOption: css`
     display: flex;

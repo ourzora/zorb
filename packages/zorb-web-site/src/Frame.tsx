@@ -171,9 +171,9 @@ export const Frame = () => {
               <dt>price</dt>
               <dd>Free. Just pay gas.</dd>
               <dt>starts</dt>
-              <dd>Jan 1 2022, 0:00 UTC</dd>
+              <dd>Jan 1<sup>st</sup> 2022, 0:00 UTC</dd>
               <dt>ends</dt>
-              <dd>Jan 2 2022, 0:00 UTC</dd>
+              <dd>Jan 2<sup>nd</sup> 2022, 20:00 UTC</dd>
             </dl>
           </RoundedContainer>
         </div>
