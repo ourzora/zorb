@@ -5,6 +5,7 @@ import { ZorbCards } from "./ZorbCards";
 import { RoundedContainer } from "./RoundedContainer";
 import { ZORB_CONTRACT } from "./env-vars";
 import { MintButton } from "./MintButton";
+import { NumberMinted } from "./NumberMinted";
 
 export const Frame = () => {
   const [theme, setTheme] = useState("light");
@@ -166,7 +167,7 @@ export const Frame = () => {
                 </a>
               </dd>
               <dt>№ minted</dt>
-              <dd>1</dd>
+              <dd><NumberMinted /></dd>
               <dt>price</dt>
               <dd>Free. Just pay gas.</dd>
               <dt>starts</dt>
