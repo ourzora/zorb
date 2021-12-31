@@ -94,8 +94,8 @@ describe("ZorbNFT", () => {
         .map(
           (zorb, indx) =>
             `<div>${signerAddresses[indx]}${makeInline(zorb).replace(
-              /grad/g,
-              `grad${indx}`
+              /gzr/g,
+              `gzr${indx}`
             )}<zora-zorb address="${signerAddresses[indx]}"></zora-zorb></div>`
         )
         .join("\n") + `<script src="./zorb-web-component.umd.js"></script>`
