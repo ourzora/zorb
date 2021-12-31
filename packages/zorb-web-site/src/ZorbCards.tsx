@@ -13,8 +13,7 @@ const ZorbCard = ({ result }: { result: any }) => {
         }zora.co/collections/${ZORB_CONTRACT}/${result.tokenId}`}
         target="_blank"
         title="View on Zora"
-        className={css`
-        `}
+        className={css``}
       >
         <img src={result.metadata.json.image} />
       </a>
@@ -105,10 +104,13 @@ const ZorbCard = ({ result }: { result: any }) => {
   );
 };
 
-export const ZorbCards = () => {
-  const { error, results } = useNFTIndexerQuery({
-    collectionAddresses: [ZORB_CONTRACT],
-  });
+export const ZorbCards = ({ tokens }) => {
+  const { error, results } = useNFTIndexerQuery(
+    {
+      collectionAddresses: [ZORB_CONTRACT],
+    },
+    { initialData: tokens }
+  );
 
   if (error) {
     return <RoundedContainer>{error.toString()}</RoundedContainer>;
@@ -131,6 +133,7 @@ export const ZorbCards = () => {
       `}
     >
       {results
+        .map((r: any) => r.nft.tokenData)
         .filter((r) => r.metadata?.json)
         .map((result) => (
           <ZorbCard key={result.tokenId} result={result} />

@@ -148,10 +148,14 @@ contract ZorbNFT is ERC721, Ownable {
         }
     }
 
+    function gradientForAddress(address user) public pure returns (bytes[5] memory) {
+        return ColorLib.gradientForAddress(user);
+    }
+
     /// Public getter for getting the given Zorb for an address
     /// @param user address to get Zorb SVG for
     function zorbForAddress(address user) public view returns (string memory) {
-        bytes[5] memory colors = ColorLib.gradientForAddress(user);
+        bytes[5] memory colors = gradientForAddress(user);
         string memory encoded = sharedMetadata.base64Encode(
             abi.encodePacked(
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110"><defs>'
@@ -214,13 +218,18 @@ contract ZorbNFT is ERC721, Ownable {
     {
         require(_exists(tokenId), "No token");
 
+        string memory idString = sharedMetadata.numberToString(tokenId);
+
         return
             sharedMetadata.encodeMetadataJSON(
                 abi.encodePacked(
                     '{"name": "Zorb #',
-                    sharedMetadata.numberToString(tokenId),
-                    '", "description": "Zora Zorb New Years Drop 2022',
-                    '\\n\\nCelebrate Zora with your own unique Zorb\\n\\n[https://zorb.dev/](zorb.dev)\\n\\nWhen Zorbs are sold or transferred, they morph into the Zorb of the current owner.", "image": "',
+                    idString,
+                    unicode'", "description": "Zorbs were distributed for free by ZORA on New Year’s 2022. Each NFT imbues the properties of its wallet holder, and when sent to someone else, will transform.\\n\\nView this NFT at [https://zorb.dev/nft/',
+                    idString,
+                    '](zorb.dev/nft/',idString,
+
+                    ')", "image": "',
                     zorbForAddress(getZorbRenderAddress(tokenId)),
                     '"}'
                 )

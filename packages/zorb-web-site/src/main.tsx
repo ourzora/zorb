@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom";
 import { Frame } from "./Frame";
 import { css } from "@emotion/css";
 import { Networks, NFTFetchConfiguration } from "@zoralabs/nft-hooks";
@@ -27,7 +26,7 @@ const SetStyles = ({ children }: any) => (
   </div>
 );
 
-ReactDOM.render(
+export const App = ({children}: any) => (
   <SetStyles>
     <Web3ConfigProvider
       theme={Web3Theme}
@@ -39,9 +38,8 @@ ReactDOM.render(
           process.env.NETWORK_ID === "4" ? Networks.RINKEBY : Networks.MAINNET
         }
       >
-        <Frame />
+        {children}
       </NFTFetchConfiguration>
     </Web3ConfigProvider>
-  </SetStyles>,
-  document.getElementById("main")
+  </SetStyles>
 );

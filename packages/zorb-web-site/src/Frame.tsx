@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { css } from "@emotion/css";
-import Octo from "./octo";
 import { ZorbCards } from "./ZorbCards";
 import { RoundedContainer } from "./RoundedContainer";
 import { ZORB_CONTRACT } from "./env-vars";
@@ -8,49 +6,10 @@ import { MintButton } from "./MintButton";
 import { NumberMinted } from "./NumberMinted";
 import { format } from "date-fns";
 import { END_UNIX_TIME, START_UNIX_TIME } from "./mint-status";
+import { ArrowNext } from "./ArrowNext";
 
-export const Frame = () => {
-  const [theme, setTheme] = useState("light");
-
+export const Frame = ({tokens}: any) => {
   return (
-    <div
-      className={css`
-        font-family: "DM Mono";
-
-        min-height: 100vh;
-      `}
-    >
-      <div
-        className={css`
-          padding: 0px 10px;
-          display: flex;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          margin-bottom: 20px;
-        `}
-      >
-        <code
-          className={css`
-            color: #f6f6f6;
-          `}
-        >
-          {/* <span
-            className={css`
-              opacity: 0.5;
-            `}
-          >
-            npm i{" "}
-          </span>
-          <span>@zoralabs/zorb</span> */}
-          on-chain ZORB
-        </code>
-        <a target="_BLANK" href="https://github.com/ourzora/zorb">
-          <Octo />
-        </a>
-      </div>
       <div
         className={css`
           @media only screen and (min-width: 800px) {
@@ -166,7 +125,7 @@ export const Frame = () => {
                 color: white;
                 white-space: pre;
                 `} href={`http://etherscan.io/address/${ZORB_CONTRACT}`}>
-                  {ZORB_CONTRACT}<span className={css`font-family: Inter;`}> ↗</span>
+                {ZORB_CONTRACT}<ArrowNext />
                 </a>
               </dd>
               <dt>№ minted</dt>
@@ -174,10 +133,10 @@ export const Frame = () => {
               <dt>price</dt>
               <dd>Free. Just pay gas.</dd>
               <dt>starts</dt>
-              <dd>{format(new Date(START_UNIX_TIME*1000), 'MMM dd yyyy, HH:mm:ss zzz')}</dd>
+              <dd>{format(new Date(START_UNIX_TIME*1000), 'MMM dd yyyy, HH:mm zzz')}</dd>
               {/* <dd>Jan 1<sup>st</sup> 2022, 0:00 EST</dd> */}
               <dt>ends</dt>
-              <dd>{format(new Date(END_UNIX_TIME*1000), 'MMM dd yyyy, HH:mm:ss zzz')}</dd>
+              <dd>{format(new Date(END_UNIX_TIME*1000), 'MMM dd yyyy, HH:mm zzz')}</dd>
               {/* <dd>Jan 2<sup>nd</sup> 2022, 20:00 EST</dd> */}
             </dl>
           </RoundedContainer>
@@ -197,9 +156,8 @@ export const Frame = () => {
             }
           `}
         >
-          <ZorbCards />
+          <ZorbCards tokens={tokens} />
         </div>
       </div>
-    </div>
   );
 };
