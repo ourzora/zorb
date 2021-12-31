@@ -76,7 +76,9 @@ contract ZorbNFT is ERC721, ERC721Burnable, Ownable {
         string memory encoded = sharedMetadata.base64Encode(
             abi.encodePacked(
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><defs>'
-                '<radialGradient fx="66.46%" fy="24.36%" id="grad">'
+                // new gradient fix – test
+                '<radialGradient id="grad" gradientTransform="translate(132.9156 48.715) scale(150.5816)" gradientUnits="userSpaceOnUse" r="1" cx="0" cy="0%">'
+                // '<radialGradient fx="66.46%" fy="24.36%" id="grad">'
                 '<stop offset="15.62%" stop-color="',
                 colors[0],
                 '" /><stop offset="39.58%" stop-color="',
@@ -88,7 +90,7 @@ contract ZorbNFT is ERC721, ERC721Burnable, Ownable {
                 '" /><stop offset="100%" stop-color="',
                 colors[4],
                 '" /></radialGradient></defs>'
-                '<g transform="translate(10 10) scale(0.9)"><circle cx="50%" cy="50%" r="50%" fill="url(#grad)" /></g>'
+                '<g transform="translate(10 10) scale(0.9)"><circle stroke="rgba(0,0,0,0.1)" stroke-width="1" cx="50%" cy="50%" r="50%" fill="url(#grad)" /></g>'
                 "</svg>"
             )
         );
