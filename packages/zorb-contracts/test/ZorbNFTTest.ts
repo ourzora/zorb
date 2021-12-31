@@ -48,7 +48,7 @@ describe("ZorbNFT", () => {
   });
 
   it("hides from marketplace transfers", async () => {
-    await childNft.adminMint([signerAddress]);
+    await childNft.airdrop([signerAddress]);
     await childNft.setKnownMarketplaces([signer2Address], true);
     await childNft.transferFrom(signerAddress, signer2Address, 1);
     // shows old
@@ -59,15 +59,24 @@ describe("ZorbNFT", () => {
     expect(await childNft.getZorbRenderAddress(1)).to.be.equal(signer3Address);
   });
 
-  it("allows batch adminMint", async () => {
+  it("allows batch airdrop mint for admin", async () => {
     await childNft.airdrop([signerAddress]);
     expect(await childNft.ownerOf(1)).to.be.equal(signerAddress);
     await expect(
-      childNft.connect(signer2).adminMint([signerAddress])
+      childNft.connect(signer2).airdrop([signerAddress])
     ).to.be.revertedWith("Ownable: caller is not the owner");
   });
 
-  xit("renders", async () => {
+  it("allows minting in window", async () => {
+    new Date(2021, )
+    await childNft.airdrop([signerAddress]);
+    expect(await childNft.ownerOf(1)).to.be.equal(signerAddress);
+    await expect(
+      childNft.connect(signer2).airdrop([signerAddress])
+    ).to.be.revertedWith("Ownable: caller is not the owner");
+  });
+
+  it.only("renders", async () => {
     const signers = await ethers.getSigners();
     await network.provider.send("evm_setNextBlockTimestamp", [1640995200]);
     await network.provider.send("evm_mine");
