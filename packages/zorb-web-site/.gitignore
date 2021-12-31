@@ -1,3 +1,4 @@
 .parcel-cache
 public
 dist
+.env*

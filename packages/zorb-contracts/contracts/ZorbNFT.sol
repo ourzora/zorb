@@ -18,12 +18,9 @@ contract ZorbNFT is ERC721, ERC721Burnable, Ownable {
     // new years 2022 base
 
     // PROD
-    // uint256 private constant MINT_START_AT = 1640995200;
-    // uint256 private constant MINT_DURATION = 24 hours;
+    uint256 private constant MINT_START_AT = 1640995200;
+    uint256 private constant MINT_DURATION = 42 hours;
 
-    // RINKEBY ONLY
-    uint256 private constant MINT_START_AT = 1640917926;
-    uint256 private constant MINT_DURATION = 24 hours;
 
     mapping(address => bool) private knownMarketplace;
     mapping(uint256 => address) private lastOwner;
@@ -66,7 +63,8 @@ contract ZorbNFT is ERC721, ERC721Burnable, Ownable {
         return currentTokenId.current();
     }
 
-    function adminMint(address[] memory to) public onlyOwner {
+    function airdrop(address[] memory to) public {
+        require(mintIsOpen() || msg.sender == owner(), "Only open");
         for (uint256 i = 0; i < to.length; i++) {
             _mint(to[i], currentTokenId.current());
             currentTokenId.increment();

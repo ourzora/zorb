@@ -8,7 +8,8 @@ import {
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TimeLeft } from "./TimeLeft";
 import { ethers } from "ethers";
-import { ZORB_CONTRACT } from "./env-vars";
+import { NETWORK_ID, ZORB_CONTRACT } from "./env-vars";
+import { getStatus, Status } from "./mint-status";
 
 // The ERC-20 Contract ABI, which is a common contract interface
 // for tokens (this is the Human-Readable ABI format)
@@ -116,6 +117,8 @@ export const MintButton = ({}) => {
       openModal();
     }
   }, [active, openModal, openModalByName]);
+
+  const mintStatus = getStatus();
 
   return (
     <>
@@ -253,12 +256,22 @@ export const MintButton = ({}) => {
             line-height: 25px;
             color: #000;
 
+            white-space: nowrap;
+
             padding: 17px 31px;
             border: 0;
             cursor: pointer;
+
+            &:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+            }
           `}
+          disabled={NETWORK_ID === '1' && mintStatus !== Status.OPEN}
         >
-          Mint now
+          {mintStatus === Status.NOT_STARTED && 'Mint soon'}
+          {mintStatus === Status.FINISHED && 'Mint over'}
+          {mintStatus === Status.OPEN && 'Mint now'}
         </button>
         <div
           className={css`

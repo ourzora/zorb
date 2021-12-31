@@ -60,7 +60,7 @@ describe("ZorbNFT", () => {
   });
 
   it("allows batch adminMint", async () => {
-    await childNft.adminMint([signerAddress]);
+    await childNft.airdrop([signerAddress]);
     expect(await childNft.ownerOf(1)).to.be.equal(signerAddress);
     await expect(
       childNft.connect(signer2).adminMint([signerAddress])
