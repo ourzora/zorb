@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity 0.8.9;
 
-import {StringsUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol";
+import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 
 library ColorLib {
     struct HSL {
@@ -638,11 +638,11 @@ library ColorLib {
         return
             abi.encodePacked(
                 "hsl(",
-                StringsUpgradeable.toString(h),
+                Strings.toString(h),
                 ", ",
-                StringsUpgradeable.toString(s),
+                Strings.toString(s),
                 "%, ",
-                StringsUpgradeable.toString(l),
+                Strings.toString(l),
                 "%)"
             );
     }
