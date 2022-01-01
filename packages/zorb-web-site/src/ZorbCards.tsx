@@ -2,7 +2,7 @@ import { useNFTIndexerQuery, useNFTType } from "@zoralabs/nft-hooks";
 import { RoundedContainer } from "./RoundedContainer";
 import { css } from "@emotion/css";
 import { ZORB_CONTRACT, NETWORK_ID } from "./env-vars";
-import { sliceAddress } from "./eth-utils";
+import { AddressView } from "./AddressView";
 
 const ZorbCard = ({ result }: { result: any }) => {
   return (
@@ -74,7 +74,7 @@ const ZorbCard = ({ result }: { result: any }) => {
               opacity: 0.75;
             `}
           >
-            {sliceAddress(result.owner)}
+            <AddressView address={result.owner} />
           </a>
         </div>
         <a

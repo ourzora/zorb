@@ -1,4 +1,4 @@
 export * from "./Zorb.svelte";
-export { getZorbGradients } from "./getZorbGradients";
+export { zorbImageDataURI } from "./zorbImageDataURI";
 import * as lib from "./lib";
 export { lib };

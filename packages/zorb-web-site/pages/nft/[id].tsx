@@ -1,7 +1,5 @@
 import { GetServerSideProps } from "next";
-import { useNFT } from "@zoralabs/nft-hooks";
 import { NETWORK_ID, ZORB_CONTRACT } from "../../src/env-vars";
-import { IndexerDataType } from "@zoralabs/nft-hooks/dist/fetcher/AuctionInfoTypes";
 import { css } from "@emotion/css";
 import Head from "../../src/Head";
 import { RoundedContainer } from "../../src/RoundedContainer";
@@ -9,10 +7,6 @@ import { ArrowNext } from "../../src/ArrowNext";
 import { getTokenInfo } from "../../src/get-query-contract";
 
 export default function Zorb({ id, tokenInfo }: any) {
-  // const { data, error } = useNFT(ZORB_CONTRACT, id, { useBetaIndexer: true });
-
-  // const indexerData = data as IndexerDataType;
-
   if (!tokenInfo) {
     return (
       <RoundedContainer>
@@ -91,8 +85,8 @@ export default function Zorb({ id, tokenInfo }: any) {
               }
             `}
           >
-            <div>{indexerData.zoraIndexerResponse.metadata.json.name}</div>
-            <div className="dark">{indexerData.nft.owner}</div>
+            <div>Zorb #{id}</div>
+            <div className="dark">{tokenInfo.owner}</div>
             <div className="link-first">
               <a
                 href={`https://${
