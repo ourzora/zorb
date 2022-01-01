@@ -29,13 +29,15 @@ const MintModalContent = ({ setError, setMintId }: any) => {
 
   const doMint = useCallback(async () => {
     try {
-      const signerContract = contract.connect(await library.getSigner())
+      const signerContract = contract.connect(await library.getSigner());
+      let hasSetMintId = false;
       console.log(signerContract);
       signerContract.on(
         "Transfer",
         (from: string, to: string, tokenId: BigNumber) => {
-          console.log({from, to, account})
+          console.log({ from, to, account });
           if (from === ethers.constants.AddressZero && to === account) {
+            hasSetMintId = true;
             setMintId(tokenId.toNumber().toString());
             openModalByName("success");
           }
@@ -43,6 +45,11 @@ const MintModalContent = ({ setError, setMintId }: any) => {
       );
       const minting = await signerContract.mint();
       await minting.wait();
+      setTimeout(() => {
+        if (!hasSetMintId) {
+          openModalByName("success");
+        }
+      }, 10000);
     } catch (e) {
       if (e?.error?.message) {
         setError(e.error.message);
@@ -52,7 +59,7 @@ const MintModalContent = ({ setError, setMintId }: any) => {
         openModalByName("errorModal");
       }
     }
-  }, [contract, openModalByName]);
+  }, [contract, openModalByName, setMintId]);
 
   useEffect(() => {
     if (active) {
@@ -184,28 +191,53 @@ export const MintButton = ({}) => {
           Thank you for being part of Zora’s first year. May we ponder on this
           zorb together for many more years to come.
         </p>
-        <button
-          onClick={() => {
-            window.location.href = `/nft/${mintId}`;
-          }}
-          className={css`
-            background: #333333;
-            cursor: pointer;
-            border-radius: 4px;
-            padding: 17.5px 10px;
-            width: 100%;
-            color: #fff;
-            font-family: Inter;
-            text-align: center;
-            font-style: normal;
-            font-weight: 600;
-            border: 0;
-            font-size: 16px;
-            line-height: 25px;
-          `}
-        >
-          View my NFT
-        </button>
+        {mintId ? (
+          <button
+            onClick={() => {
+              window.location.href = `/nft/${mintId}`;
+            }}
+            className={css`
+              background: #333333;
+              cursor: pointer;
+              border-radius: 4px;
+              padding: 17.5px 10px;
+              width: 100%;
+              color: #fff;
+              font-family: Inter;
+              text-align: center;
+              font-style: normal;
+              font-weight: 600;
+              border: 0;
+              font-size: 16px;
+              line-height: 25px;
+            `}
+          >
+            View my NFT
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              closeModal();
+            }}
+            className={css`
+              background: #333333;
+              cursor: pointer;
+              border-radius: 4px;
+              padding: 17.5px 10px;
+              width: 100%;
+              color: #fff;
+              font-family: Inter;
+              text-align: center;
+              font-style: normal;
+              font-weight: 600;
+              border: 0;
+              font-size: 16px;
+              line-height: 25px;
+            `}
+          >
+            Finish
+          </button>
+        )}
       </ModalActionLayout>
       <ModalActionLayout
         modalName="errorModal"

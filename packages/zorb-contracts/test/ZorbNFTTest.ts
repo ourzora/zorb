@@ -10,7 +10,6 @@ function parseZorb(zorb: string) {
     zorb.substring("data:application/json;base64,".length),
     "base64"
   ).toString("utf-8");
-  console.log({ zorbJSONStr });
   const zorbJSON = JSON.parse(zorbJSONStr);
   return zorbJSON;
 }

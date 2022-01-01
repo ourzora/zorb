@@ -125,13 +125,6 @@ export const gradientForAddress = (address: string) => {
     bScaleRange(bytes[10], 70, 92)
   );
 
-  console.log({
-    startSaturation,
-    endSaturation,
-    startHue,
-    startLightness,
-    endLightness
-  });
   const lightnessShiftFn = lerpLightnessFn(bytes[5] % 2);
   const saturationShiftFn = lerpSaturationFn(bytes[3] % 2);
   const inputs: ColorInput[] = [
