@@ -77,8 +77,9 @@ interface INFT {
 contract ZorbNFT is ERC721, Ownable {
     using Counters for Counters.Counter;
 
-    /// Production mint start = 2022 gmt new years
-    uint256 private constant MINT_START_AT = 1640995200;
+    /// Production mint start = 2022 EST new years
+    uint256 private constant MINT_START_AT = 1641013200;
+
     /// Production mint duration = 20 + 22 hours
     uint256 private constant MINT_DURATION = 42 hours;
 
@@ -225,9 +226,9 @@ contract ZorbNFT is ERC721, Ownable {
                 abi.encodePacked(
                     '{"name": "Zorb #',
                     idString,
-                    unicode'", "description": "Zorbs were distributed for free by ZORA on New Year’s 2022. Each NFT imbues the properties of its wallet holder, and when sent to someone else, will transform.\\n\\nView this NFT at [https://zorb.dev/nft/',
+                    unicode'", "description": "Zorbs were distributed for free by ZORA on New Year’s 2022. Each NFT imbues the properties of its wallet holder, and when sent to someone else, will transform.\\n\\nView this NFT at [zorb.dev/nft/',
                     idString,
-                    '](zorb.dev/nft/',idString,
+                    '](https://zorb.dev/nft/',idString,
 
                     ')", "image": "',
                     zorbForAddress(getZorbRenderAddress(tokenId)),

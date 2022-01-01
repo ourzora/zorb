@@ -115,9 +115,9 @@ export default function Zorb({ id, tokenInfo }: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  let tokenInfo = undefined;
+  let tokenInfo = null;
   try {
-    tokenInfo = getTokenInfo(params.id as string)
+    tokenInfo = await getTokenInfo(params.id as string)
   } catch (e) {
     console.error(e);
     // couldnt get token info

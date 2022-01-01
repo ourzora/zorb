@@ -10,7 +10,6 @@ import { Web3Theme } from "../src/Web3Theme";
 import { PageHeader } from "../src/PageHeader";
 
 export default function App({ Component, pageProps }: any) {
-  console.log("making app");
   return (
     <div
       className={css`

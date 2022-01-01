@@ -109,9 +109,9 @@ export const MintButton = ({}) => {
   }, [account]);
 
   useEffect(() => {
-    if (!lastActive.current && active) {
-      mint();
-    }
+    // if (!lastActive.current && active) {
+    //   mint();
+    // }
     lastActive.current = active;
   }, [active, lastActive]);
   useEffect(() => {
