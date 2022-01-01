@@ -35,11 +35,11 @@ const MintModalContent = ({ setError, setMintId }: any) => {
         (from: string, to: string, tokenId: BigNumber) => {
           if (from === ethers.constants.AddressZero && to === account) {
             setMintId(tokenId.toNumber().toString());
+            openModalByName("success");
           }
         }
       );
       await minting.wait();
-      openModalByName("success");
     } catch (e) {
       if (e?.error?.message) {
         setError(e.error.message);
