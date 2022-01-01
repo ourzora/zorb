@@ -50,7 +50,7 @@ export const PageHeader = ({ children }: { children: React.ReactNode }) => (
             npm i{" "}
           </span>
           <span>@zoralabs/zorb</span> */}
-        on-chain ZORB
+        on-chain <span>zorb</span>
       </a>
       <a target="_BLANK" href="https://github.com/ourzora/zorb">
         <Octo />

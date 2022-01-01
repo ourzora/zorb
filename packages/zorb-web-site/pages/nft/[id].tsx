@@ -43,6 +43,7 @@ export default function Zorb({ id, tokenInfo }: any) {
             display: flex;
             align-items: center;
             justify-content: center;
+            flex: 1;
           `}
         >
           <img

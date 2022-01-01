@@ -22,6 +22,7 @@ const ZORB_API = [
 const MintModalContent = ({ setError, setMintId }: any) => {
   const { active, account, library } = useWeb3Wallet();
   const { openModalByName } = useWalletModalState();
+  const [minting, setMinting] = useState<boolean>(false);
   const contract = useMemo(() => {
     // The Contract object
     return new ethers.Contract(ZORB_CONTRACT, ZORB_API, library);
@@ -44,6 +45,7 @@ const MintModalContent = ({ setError, setMintId }: any) => {
         }
       );
       const minting = await signerContract.mint();
+      setMinting(true);
       await minting.wait();
       setTimeout(() => {
         if (!hasSetMintId) {
@@ -92,6 +94,7 @@ const MintModalContent = ({ setError, setMintId }: any) => {
         Approve the request in your wallet to continue.
       </p>
       <p>Gas fees apply when minting.</p>
+      {minting && <p>Waiting for network confirmation...</p>}
     </div>
   );
 };
