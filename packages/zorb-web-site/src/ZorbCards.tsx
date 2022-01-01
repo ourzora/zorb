@@ -23,9 +23,7 @@ const ZorbCard = ({ result }: { result: any }) => {
       }
     `} padding="5px">
       <a
-        href={`https://${
-          NETWORK_ID === "4" ? "rinkeby." : ""
-        }zora.co/collections/${ZORB_CONTRACT}/${result.tokenId}`}
+        href={`/nft/${result.tokenId}`}
         target="_blank"
         title="View on Zora"
         className={css``}
@@ -100,9 +98,7 @@ const ZorbCard = ({ result }: { result: any }) => {
         <a
           target="_blank"
           title="View NFT on Zora"
-          href={`https://${
-            NETWORK_ID === "4" ? "rinkeby." : ""
-          }zora.co/collections/${ZORB_CONTRACT}/${result.tokenId}`}
+          href={`/nft/${result.tokenId}`}
           className={css`
             display: block;
             font-family: Inter;
