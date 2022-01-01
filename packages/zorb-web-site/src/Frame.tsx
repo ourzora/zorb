@@ -192,7 +192,7 @@ export const Frame = ({ tokens }: any) => {
             width: 100%;
           `}
         >
-          <div>
+          <div className={css`padding-top:100px`}>
             <DefaultZorb />
             <div
               className={css`
