@@ -321,11 +321,12 @@ export const MintButton = ({}) => {
               cursor: not-allowed;
             }
           `}
-          disabled={NETWORK_ID === "1" && mintStatus !== Status.OPEN}
+          // disabled={NETWORK_ID === "1" && mintStatus !== Status.OPEN}
         >
-          {mintStatus === Status.NOT_STARTED && "Mint soon"}
-          {mintStatus === Status.FINISHED && "Mint over"}
-          {mintStatus === Status.OPEN && "Mint now"}
+          Mint now
+          {/* {mintStatus === Status.NOT_STARTED && "Mint soon"} */}
+          {/* {mintStatus === Status.FINISHED && "Mint over"} */}
+          {/* {mintStatus === Status.OPEN && "Mint now"} */}
         </button>
         <div
           className={css`
