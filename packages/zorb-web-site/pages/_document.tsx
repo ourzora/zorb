@@ -4,7 +4,9 @@ class CreateAuctionHouseDocument extends Document {
   render() {
     return (
       <>
-        <script>{`/*
+        <Html>
+          <Head>
+            <script>{`/*
  @@@@@@@@@@@@@@@@@@@   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*              @@@@@@   
  @@@@@@@@@@@@@@@@@@  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*           @@@@@@@@@   
          @@@@@@@   @@@@@@@        @@@@@@@        @@@@@         @@@@@@@@@@@   
@@ -73,8 +75,7 @@ class CreateAuctionHouseDocument extends Document {
 
    https://zora.co/careers
 */`}</script>
-        <Html>
-          <Head></Head>
+          </Head>
           <body
             style={{ backgroundColor: "#171717", padding: "0", margin: "0" }}
           >

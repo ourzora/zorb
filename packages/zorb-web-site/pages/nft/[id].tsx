@@ -29,7 +29,7 @@ export default function Zorb({ id, tokenInfo }: any) {
 
   return (
     <>
-      <Head title="View your Zorb" description="" ogImage={image} />
+      <Head title="View your Zorb" description="A simple, open-source identity system for the decentralized Internet. Powered by Zora and mintable as a NFT." />
       <div
         className={css`
           display: flex;
