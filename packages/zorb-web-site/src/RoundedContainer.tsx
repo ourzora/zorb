@@ -4,9 +4,11 @@ import React from "react";
 export const RoundedContainer = ({
   children,
   padding = '27px',
+  margin = '0',
 }: {
   children: React.ReactNode;
   padding?: string;
+  margin?: string;
 }) => (
   <div
     className={css`
@@ -16,6 +18,7 @@ export const RoundedContainer = ({
         0px 0.7px 0.8px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       padding: ${padding};
+      margin: ${margin};
     `}
   >
     {children}

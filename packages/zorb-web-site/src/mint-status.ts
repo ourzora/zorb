@@ -4,7 +4,7 @@ export enum Status {
   FINISHED,
 }
 
-export const START_UNIX_TIME = 1640995200;
+export const START_UNIX_TIME = 1641013200;
 export const END_UNIX_TIME = START_UNIX_TIME + 60 * 60 * 42;
 
 export function getStatus() {

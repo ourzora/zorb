@@ -2,18 +2,21 @@ import { useNFTIndexerQuery, useNFTType } from "@zoralabs/nft-hooks";
 import { RoundedContainer } from "./RoundedContainer";
 import { css } from "@emotion/css";
 import { ZORB_CONTRACT, NETWORK_ID } from "./env-vars";
-import { sliceAddress } from "./eth-utils";
+import { AddressView } from "./AddressView";
 
 const ZorbCard = ({ result }: { result: any }) => {
   return (
     <RoundedContainer padding="5px">
-      <div
-        className={css`
-          padding: 10px;
-        `}
+      <a
+        href={`https://${
+          NETWORK_ID === "4" ? "rinkeby." : ""
+        }zora.co/collections/${ZORB_CONTRACT}/${result.tokenId}`}
+        target="_blank"
+        title="View on Zora"
+        className={css``}
       >
         <img src={result.metadata.json.image} />
-      </div>
+      </a>
       <div
         className={css`
           margin-top: 20px;
@@ -42,10 +45,10 @@ const ZorbCard = ({ result }: { result: any }) => {
               text-transform: uppercase;
               font-feature-settings: "zero" on;
 
-              color: #F6F6F6;
+              color: #f6f6f6;
             `}
           >
-            Zorb #{result.tokenId}
+            {result.metadata.json.name}
           </div>
           <a
             title="View owner on Zora"
@@ -71,7 +74,7 @@ const ZorbCard = ({ result }: { result: any }) => {
               opacity: 0.75;
             `}
           >
-            {sliceAddress(result.owner)}
+            <AddressView address={result.owner} />
           </a>
         </div>
         <a
@@ -101,10 +104,13 @@ const ZorbCard = ({ result }: { result: any }) => {
   );
 };
 
-export const ZorbCards = () => {
-  const { error, results } = useNFTIndexerQuery({
-    collectionAddresses: [ZORB_CONTRACT],
-  });
+export const ZorbCards = ({ tokens }) => {
+  const { error, results } = useNFTIndexerQuery(
+    {
+      collectionAddresses: [ZORB_CONTRACT],
+    },
+    { initialData: tokens }
+  );
 
   if (error) {
     return <RoundedContainer>{error.toString()}</RoundedContainer>;
@@ -126,9 +132,12 @@ export const ZorbCards = () => {
         }
       `}
     >
-      {results.filter((r) => r.metadata?.json).map((result) => (
-        <ZorbCard key={result.tokenId} result={result} />
-      ))}
+      {results
+        .map((r: any) => r.nft.tokenData)
+        .filter((r) => r.metadata?.json)
+        .map((result) => (
+          <ZorbCard key={result.tokenId} result={result} />
+        ))}
     </div>
   );
 };

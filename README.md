@@ -1,23 +1,24 @@
 # ZORB
 
-## Directory
+This is the zorb project monorepo.
 
-#### zorb-web-component
+See individual codebases included below:
+
+### zorb-web-component
 
 web component for zorbs
 
+[View Zorb Web Component](packages/zorb-web-component)
 
-#### zorb-contracts
+### zorb-contracts
 
 on-chain zorb NFT contracts 
 
+[View Zorb Contracts](packages/zorb-contracts)
 
-#### zorb-web-site
+### zorb-web-site
 
 web-site for zorbs and minting
 
-**run**: `yarn run dev`
-
-### Setup
-`yarn`
+[View Zorb Website](packages/zorb-web-site)
 

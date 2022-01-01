@@ -7,7 +7,7 @@ import {
 } from "@zoralabs/simple-wallet-provider";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { TimeLeft } from "./TimeLeft";
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { NETWORK_ID, ZORB_CONTRACT } from "./env-vars";
 import { getStatus, Status } from "./mint-status";
 
@@ -19,8 +19,8 @@ const ZORB_API = [
   "event Transfer(address indexed from, address indexed to, uint amount)",
 ];
 
-const MintModalContent = ({ setError }: any) => {
-  const { active, library } = useWeb3Wallet();
+const MintModalContent = ({ setError, setMintId }: any) => {
+  const { active, account, library } = useWeb3Wallet();
   const { openModalByName } = useWalletModalState();
   const contract = useMemo(() => {
     // The Contract object
@@ -30,6 +30,14 @@ const MintModalContent = ({ setError }: any) => {
   const doMint = useCallback(async () => {
     try {
       const minting = await contract.connect(await library.getSigner()).mint();
+      contract.on(
+        "Transfer",
+        (from: string, to: string, tokenId: BigNumber) => {
+          if (from === ethers.constants.AddressZero && to === account) {
+            setMintId(tokenId.toNumber().toString());
+          }
+        }
+      );
       await minting.wait();
       openModalByName("success");
     } catch (e) {
@@ -84,6 +92,7 @@ export const MintButton = ({}) => {
   const { openModalByName, closeModal } = useWalletModalState();
   const lastActive = useRef<any>();
   const [error, setError] = useState();
+  const [mintId, setMintId] = useState<string | undefined>();
 
   const [yourZorb, setYourZorb] = useState<string | undefined>(undefined);
 
@@ -100,6 +109,9 @@ export const MintButton = ({}) => {
   }, [account]);
 
   useEffect(() => {
+    // if (!lastActive.current && active) {
+    //   mint();
+    // }
     lastActive.current = active;
   }, [active, lastActive]);
   useEffect(() => {
@@ -140,6 +152,7 @@ export const MintButton = ({}) => {
               rgba(18, 89, 181, 0.2) 94.98%
             );
             border-radius: 4px;
+            text-align: center;
           `}
         >
           <img
@@ -169,7 +182,9 @@ export const MintButton = ({}) => {
           zorb together for many more years to come.
         </p>
         <button
-          onClick={() => closeModal()}
+          onClick={() => {
+            window.location.href = `/nft/${mintId}`;
+          }}
           className={css`
             background: #333333;
             cursor: pointer;
@@ -186,7 +201,7 @@ export const MintButton = ({}) => {
             line-height: 25px;
           `}
         >
-          Finish
+          View my NFT
         </button>
       </ModalActionLayout>
       <ModalActionLayout
@@ -232,14 +247,14 @@ export const MintButton = ({}) => {
       </ModalActionLayout>
       <ModalActionLayout
         modalName="mintModal"
-        modalTitle="Mint your Zorb"
+        modalTitle="Approve minting request"
         modalDescription="Mint your Zorb"
       >
-        <MintModalContent setError={setError} />
+        <MintModalContent setMintId={setMintId} setError={setError} />
       </ModalActionLayout>
       <div
         className={css`
-          margin-top: 10px;
+          margin-top: 20px;
           display: flex;
           align-items: center;
         `}
@@ -268,11 +283,11 @@ export const MintButton = ({}) => {
               cursor: not-allowed;
             }
           `}
-          disabled={NETWORK_ID === '1' && mintStatus !== Status.OPEN}
+          disabled={NETWORK_ID === "1" && mintStatus !== Status.OPEN}
         >
-          {mintStatus === Status.NOT_STARTED && 'Mint soon'}
-          {mintStatus === Status.FINISHED && 'Mint over'}
-          {mintStatus === Status.OPEN && 'Mint now'}
+          {mintStatus === Status.NOT_STARTED && "Mint soon"}
+          {mintStatus === Status.FINISHED && "Mint over"}
+          {mintStatus === Status.OPEN && "Mint now"}
         </button>
         <div
           className={css`
