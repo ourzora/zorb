@@ -3,10 +3,25 @@ import { RoundedContainer } from "./RoundedContainer";
 import { css } from "@emotion/css";
 import { ZORB_CONTRACT, NETWORK_ID } from "./env-vars";
 import { AddressView } from "./AddressView";
+import { gradientForAddress } from "./gradient-lib";
+
 
 const ZorbCard = ({ result }: { result: any }) => {
+  const gradientColors = gradientForAddress(result.owner)
   return (
-    <RoundedContainer padding="5px">
+    <RoundedContainer className={css`
+    &:hover {
+      background: linear-gradient(0deg,
+        rgba(30, 30, 30, 0.93) 0%,
+        rgba(30, 30, 30, 0.93) 100%
+      ), linear-gradient(202.92deg,
+        ${gradientColors[0]} 22.55%,
+        ${gradientColors[1]} 43.12%,
+        ${gradientColors[2]} 71.73%,
+        ${gradientColors[3]} 86.93%,
+        ${gradientColors[4]} 94.98%);
+      }
+    `} padding="5px">
       <a
         href={`https://${
           NETWORK_ID === "4" ? "rinkeby." : ""
@@ -15,7 +30,12 @@ const ZorbCard = ({ result }: { result: any }) => {
         title="View on Zora"
         className={css``}
       >
-        <img src={result.metadata.json.image} />
+        <img className={css`
+          width: 100px;
+          height: 100px;
+          display: block;
+          margin: 35px auto 40px;
+        `} src={result.metadata.json.image} />
       </a>
       <div
         className={css`
@@ -124,11 +144,15 @@ export const ZorbCards = ({ tokens }) => {
     <div
       className={css`
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: repeat(1, 1fr);
         grid-gap: 30px;
 
-        @media only screen and (min-width: 800px) {
-          grid-template-columns: auto auto auto;
+        @media only screen and (min-width: 375px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media only screen and (min-width: 1280px) {
+          grid-template-columns: repeat(4, 1fr);
         }
       `}
     >
