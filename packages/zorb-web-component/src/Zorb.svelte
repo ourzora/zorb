@@ -3,7 +3,7 @@
 <script lang="ts">
   import { gradientForAddress } from "./lib";
   import {instanceCount} from './instanceCounter';
-  export let size = undefined;
+  export let size = '100%';
   export let address = "0x0000000000000000000000000000000000000000";
   
   const gradientInfo = gradientForAddress(address);
