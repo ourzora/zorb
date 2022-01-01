@@ -6,6 +6,7 @@ import {
   MediaFetchAgent,
   NetworkIDs,
 } from "@zoralabs/nft-hooks";
+import { ZORB_CONTRACT, NETWORK_ID } from "../src/env-vars";
 
 export default function Home({ tokens }: { tokens: any }) {
   return (
@@ -15,10 +16,9 @@ export default function Home({ tokens }: { tokens: any }) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const fetchAgent = new MediaFetchAgent(
-    process.env.NEXT_PUBLIC_NETWORK_ID as NetworkIDs
+    NETWORK_ID as NetworkIDs
   );
-  const contractAddress = process.env
-    .NEXT_PUBLIC_ZORB_CONTRACT as string;
+  const contractAddress = ZORB_CONTRACT;
   const tokens = await FetchStaticData.fetchZoraIndexerList(fetchAgent, {
     collectionAddresses: [contractAddress],
     limit: 100,

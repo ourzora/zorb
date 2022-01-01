@@ -1,4 +1,4 @@
-const Icon = () => (
+const Octo = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -15,4 +15,4 @@ const Icon = () => (
   </svg>
 );
 
-export default Icon;
+export default Octo;

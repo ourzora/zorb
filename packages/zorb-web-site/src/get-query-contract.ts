@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { ZORB_CONTRACT } from "./env-vars";
+import { NETWORK_ID, RPC_URL, ZORB_CONTRACT } from "./env-vars";
 
 const Contract = new ethers.Contract(ZORB_CONTRACT, [
   "function ownerOf(uint256) returns (address)",
@@ -8,8 +8,8 @@ const Contract = new ethers.Contract(ZORB_CONTRACT, [
 
 export async function getTokenInfo(tokenId: string) {
   const provider = new ethers.providers.JsonRpcBatchProvider(
-    process.env.RPC_URL,
-    parseInt(process.env.NETWORK_ID || "4")
+    RPC_URL,
+    parseInt(NETWORK_ID || "4")
   );
   const connectedContract = Contract.connect(provider);
   const [ownerAddress, zorbImage] = await Promise.all([
