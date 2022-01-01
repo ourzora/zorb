@@ -49,7 +49,7 @@ describe("ZorbNFT", () => {
 
   it("hides from marketplace transfers", async () => {
     // open sale
-    const START_TIME = 1640995200;
+    const START_TIME = 1641013200;
     await network.provider.send("evm_setNextBlockTimestamp", [START_TIME]);
     await network.provider.send("evm_mine");
     // end time update
@@ -74,7 +74,7 @@ describe("ZorbNFT", () => {
     
     await expect(childNft.connect(signer2).mint()).to.be.revertedWith('Mint not open');
     await expect(childNft.connect(signer2).airdrop([signerAddress])).to.be.revertedWith('Mint not open');
-    const START_TIME = 1640995200;
+    const START_TIME = 1641013200;
     await network.provider.send("evm_setNextBlockTimestamp", [START_TIME]);
     await network.provider.send("evm_mine");
     await childNft.connect(signer2).mint();
@@ -95,7 +95,7 @@ describe("ZorbNFT", () => {
 
   it("renders", async () => {
     const signers = await ethers.getSigners();
-    await network.provider.send("evm_setNextBlockTimestamp", [1640995200]);
+    await network.provider.send("evm_setNextBlockTimestamp", [1641013200]);
     await network.provider.send("evm_mine");
     const zorbs = [];
     const signerAddresses: string[] = [];

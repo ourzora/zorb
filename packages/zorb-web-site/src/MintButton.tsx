@@ -16,7 +16,7 @@ import { getStatus, Status } from "./mint-status";
 const ZORB_API = [
   "function adminMint(address to)",
   "function mint()",
-  "event Transfer(address indexed from, address indexed to, uint amount)",
+  "event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)",
 ];
 
 const MintModalContent = ({ setError, setMintId }: any) => {
@@ -29,16 +29,19 @@ const MintModalContent = ({ setError, setMintId }: any) => {
 
   const doMint = useCallback(async () => {
     try {
-      const minting = await contract.connect(await library.getSigner()).mint();
-      contract.on(
+      const signerContract = contract.connect(await library.getSigner())
+      console.log(signerContract);
+      signerContract.on(
         "Transfer",
         (from: string, to: string, tokenId: BigNumber) => {
+          console.log({from, to, account})
           if (from === ethers.constants.AddressZero && to === account) {
             setMintId(tokenId.toNumber().toString());
             openModalByName("success");
           }
         }
       );
+      const minting = await signerContract.mint();
       await minting.wait();
     } catch (e) {
       if (e?.error?.message) {
