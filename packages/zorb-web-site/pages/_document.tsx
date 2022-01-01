@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { GA_TRACKING_ID } from "../src/env-vars";
 
 class CreateAuctionHouseDocument extends Document {
   render() {
@@ -75,6 +76,26 @@ class CreateAuctionHouseDocument extends Document {
 
    https://zora.co/careers
 */`}</script>
+            {GA_TRACKING_ID && (
+              <>
+                <script
+                  async
+                  src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                />
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+                  }}
+                />
+              </>
+            )}
           </Head>
           <body
             style={{ backgroundColor: "#171717", padding: "0", margin: "0" }}
