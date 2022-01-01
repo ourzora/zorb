@@ -13,9 +13,9 @@ export const NumberMinted = () => {
         if (r.status === 200) {
           r.text().then(setCount)
         } else {
-          setCount('?');
+          setCount('');
         }
       })
   }, []);
-  return <>{count || ""}</>;
+  return <>{count ? Intl.NumberFormat('en-US').format(parseInt(count, 10)) : ""}</>;
 };
