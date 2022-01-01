@@ -5,6 +5,7 @@ import Head from "../../src/Head";
 import { RoundedContainer } from "../../src/RoundedContainer";
 import { ArrowNext } from "../../src/ArrowNext";
 import { getTokenInfo } from "../../src/get-query-contract";
+import { AddressView } from "../../src/AddressView";
 
 export default function Zorb({ id, tokenInfo }: any) {
   if (!tokenInfo) {
@@ -58,7 +59,7 @@ export default function Zorb({ id, tokenInfo }: any) {
             flex-grow: 1;
           `}
         >
-          &nbps;
+          {' '}
         </div>
         <RoundedContainer>
           <div
@@ -86,7 +87,7 @@ export default function Zorb({ id, tokenInfo }: any) {
             `}
           >
             <div>Zorb #{id}</div>
-            <div className="dark">{tokenInfo.owner}</div>
+            <div className="dark"><AddressView address={tokenInfo.ownerAddress} /></div>
             <div className="link-first">
               <a
                 href={`https://${

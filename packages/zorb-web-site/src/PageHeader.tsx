@@ -23,9 +23,23 @@ export const PageHeader = ({ children }: { children: React.ReactNode }) => (
         margin-bottom: 20px;
       `}
     >
-      <code
+      <a
+      href="/"
         className={css`
           color: #f6f6f6;
+
+          text-decoration: none;
+
+          font-family: DM Mono;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 21px;
+
+          /* identical to box height */
+          letter-spacing: -0.02em;
+
+          opacity: 0.5;
         `}
       >
         {/* <span
@@ -37,7 +51,7 @@ export const PageHeader = ({ children }: { children: React.ReactNode }) => (
           </span>
           <span>@zoralabs/zorb</span> */}
         on-chain ZORB
-      </code>
+      </a>
       <a target="_BLANK" href="https://github.com/ourzora/zorb">
         <Octo />
       </a>
