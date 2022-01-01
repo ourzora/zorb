@@ -135,6 +135,9 @@ export const Frame = ({ tokens }: any) => {
                   text-decoration: none;
                   color: white;
                   white-space: pre;
+                  @media only screen and (min-width: 400px) {
+                    font-size: 10px;
+                  }
                 `}
                 href={`http://etherscan.io/address/${ZORB_CONTRACT}`}
               >
