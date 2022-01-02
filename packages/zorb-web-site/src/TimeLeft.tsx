@@ -43,7 +43,7 @@ export const TimeLeft = () => {
     );
   }
 
-  // if (status === Status.OPEN) {
+  if (status === Status.OPEN) {
     return (
       <>
         {formatDuration(
@@ -56,7 +56,7 @@ export const TimeLeft = () => {
         left
       </>
     );
-  // }
+  }
 
-  // return <>Sale finished</>;
+  return <>Sale finished</>;
 };

@@ -70,6 +70,28 @@ export const Frame = ({ tokens }: any) => {
             of Zora.
           </p>
           <MintButton />
+          <p
+            className={css`
+              font-family: Inter;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 16px;
+              line-height: 25px;
+
+              /* or 156% */
+
+              color: #ffffff;
+
+              opacity: 0.75;
+
+              sup {
+                opacity: 0.5;
+              }
+            `}
+          >
+            <br />
+            Warning: Mint ending soon. Transactions not confirmed by mint end will fail. It is not advised to mint in the last 5 minutes.
+          </p>
         </RoundedContainer>
         <div
           className={css`
