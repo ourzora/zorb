@@ -5,35 +5,44 @@ import { ZORB_CONTRACT, NETWORK_ID } from "./env-vars";
 import { AddressView } from "./AddressView";
 import { gradientForAddress } from "./gradient-lib";
 
-
 const ZorbCard = ({ result }: { result: any }) => {
-  const gradientColors = gradientForAddress(result.owner)
+  const gradientColors = gradientForAddress(result.owner);
   return (
-    <RoundedContainer className={css`
-    &:hover {
-      background: linear-gradient(0deg,
-        rgba(30, 30, 30, 0.93) 0%,
-        rgba(30, 30, 30, 0.93) 100%
-      ), linear-gradient(202.92deg,
-        ${gradientColors[0]} 22.55%,
-        ${gradientColors[1]} 43.12%,
-        ${gradientColors[2]} 71.73%,
-        ${gradientColors[3]} 86.93%,
-        ${gradientColors[4]} 94.98%);
-      }
-    `} padding="5px">
+    <RoundedContainer
+      className={css`
+        &:hover {
+          background: linear-gradient(
+              0deg,
+              rgba(30, 30, 30, 0.93) 0%,
+              rgba(30, 30, 30, 0.93) 100%
+            ),
+            linear-gradient(
+              202.92deg,
+              ${gradientColors[0]} 22.55%,
+              ${gradientColors[1]} 43.12%,
+              ${gradientColors[2]} 71.73%,
+              ${gradientColors[3]} 86.93%,
+              ${gradientColors[4]} 94.98%
+            );
+        }
+      `}
+      padding="5px"
+    >
       <a
         href={`/nft/${result.tokenId}`}
         target="_blank"
         title="View on Zora"
         className={css``}
       >
-        <img className={css`
-          width: 100px;
-          height: 100px;
-          display: block;
-          margin: 35px auto 40px;
-        `} src={result.metadata.json.image} />
+        <img
+          className={css`
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 35px auto 40px;
+          `}
+          src={result.metadata.json.image}
+        />
       </a>
       <div
         className={css`
@@ -155,6 +164,7 @@ export const ZorbCards = ({ tokens }) => {
       {results
         .map((r: any) => r.nft.tokenData)
         .filter((r) => r.metadata?.json)
+        .reverse()
         .map((result) => (
           <ZorbCard key={result.tokenId} result={result} />
         ))}
