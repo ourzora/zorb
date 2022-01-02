@@ -135,7 +135,7 @@ export const Frame = ({ tokens }: any) => {
                   text-decoration: none;
                   color: white;
                   white-space: pre;
-                  @media only screen and (min-width: 400px) {
+                  @media only screen and (max-width: 400px) {
                     font-size: 10px;
                   }
                 `}
