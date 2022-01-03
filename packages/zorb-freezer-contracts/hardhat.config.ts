@@ -19,7 +19,7 @@ const config: HardhatUserConfig = {
 	},
 	gasReporter: {
 		currency: "USD",
-		gasPrice: 40,
+		gasPrice: 80,
 	},
 	namedAccounts: {
 		deployer: 0,
@@ -35,7 +35,7 @@ const config: HardhatUserConfig = {
 	},
 	networks: {
 		hardhat: {
-			initialDate: new Date("1 January 2022").toString(),
+			initialDate: new Date("1 January 2022 GMT").toString(),
 		},
 		...networks,
 	},

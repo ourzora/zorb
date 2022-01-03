@@ -8,6 +8,7 @@ module.exports = async ({ getNamedAccounts, deployments }: any) => {
 	if (!zorbAddress) {
 		zorbAddress = (await deployments.get("ZorbNFT")).address;
 	}
+	console.log({zorbAddress})
 	if (!sharedNFTLogic) {
 		sharedNFTLogicAddress = (await deployments.get("TestSharedNFTLogic"))
 			.address;

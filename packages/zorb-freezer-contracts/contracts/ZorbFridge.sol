@@ -8,11 +8,11 @@ import {IPublicSharedMetadata} from "@zoralabs/nft-editions-contracts/contracts/
 /// @title A fridge for all your Zorbs
 /// @author Miguel Piedrafita
 contract ZorbFridge is ERC721 {
-    ZorbNFT internal zorb;
+    ZorbNFT public immutable zorb;
     IPublicSharedMetadata private immutable sharedMetadata;
 
-    event Frozen(address indexed actor, uint256 tokenId);
-    event Unfrozen(address indexed actor, uint256 tokenId);
+    event Frozen(address indexed actor, uint256 indexed tokenId);
+    event Unfrozen(address indexed actor, uint256 indexed tokenId);
 
     constructor(ZorbNFT _zorb, IPublicSharedMetadata _metadataUtils)
         payable
@@ -30,7 +30,7 @@ contract ZorbFridge is ERC721 {
         zorb.transferFrom(msg.sender, address(this), tokenId);
     }
 
-    /// @notice Unfreeze your `tokenId` Zorb, returning its design to your wallet's
+    /// @notice Unfreeze your `tokenId` Zorb from the last wallet and deposit the original NFT in your wallet.
     function unfreeze(uint256 tokenId) public {
         require(ownerOf[tokenId] == msg.sender, "not owner");
 
@@ -48,7 +48,7 @@ contract ZorbFridge is ERC721 {
                 abi.encodePacked(
                     '{"name": "Frozen Zorb #',
                     idString,
-                    unicode'", "description": "Zorbs were distributed for free by ZORA on New Year’s 2022. Zorbs transform when sent to someone, Frozen Zorbs allow you to freeze their appearance.\\n\\nView this NFT at [zorb.dev/nft/',
+                    unicode'", "description": "Zorbs were distributed for free by ZORA on New Year’s 2022. Zorbs transform when sent to someone, Frozen Zorbs allow you to freeze their appearance.\\n\\nView the original frozen Zorb at [zorb.dev/nft/',
                     idString,
                     "](https://zorb.dev/nft/",
                     idString,
