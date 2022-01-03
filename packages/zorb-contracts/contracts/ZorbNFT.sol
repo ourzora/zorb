@@ -81,7 +81,7 @@ contract ZorbNFT is ERC721, Ownable {
     uint256 private constant MINT_START_AT = 1641013200;
 
     /// Production mint duration = 20 + 22 hours
-    uint256 private constant MINT_DURATION = 42 hours;
+    uint256 private constant MINT_DURATION = 200 days;
 
     /// Mapping that stores known marketplace contracts (escrow/auction/staking etc)
     mapping(address => bool) private knownMarketplace;

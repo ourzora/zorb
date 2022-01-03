@@ -8,6 +8,7 @@ module.exports = async ({ getNamedAccounts, deployments }: any) => {
     sharedNFTLogicAddress = (await deployments.get("TestSharedNFTLogic"))
       .address;
   }
+console.log(sharedNFTLogicAddress)
 
   await deploy("ZorbNFT", {
     from: deployer,
