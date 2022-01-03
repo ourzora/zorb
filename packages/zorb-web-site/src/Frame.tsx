@@ -7,7 +7,7 @@ import { NumberMinted } from "./NumberMinted";
 import { format } from "date-fns";
 import { END_UNIX_TIME, START_UNIX_TIME } from "./mint-status";
 import { ArrowNext } from "./ArrowNext";
-import DefaultZorb from './DefaultZorb';
+import DefaultZorb from "./DefaultZorb";
 
 export const Frame = ({ tokens }: any) => {
   return (
@@ -22,9 +22,14 @@ export const Frame = ({ tokens }: any) => {
       <div
         className={css`
           flex-basis: 446px;
+
           @media only screen and (min-width: 800px) {
             margin-top: 0;
             margin-left: 30px;
+
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 100px);
           }
         `}
       >
@@ -70,28 +75,6 @@ export const Frame = ({ tokens }: any) => {
             of Zora.
           </p>
           <MintButton />
-          <p
-            className={css`
-              font-family: Inter;
-              font-style: normal;
-              font-weight: normal;
-              font-size: 16px;
-              line-height: 25px;
-
-              /* or 156% */
-
-              color: #ffffff;
-
-              opacity: 0.75;
-
-              sup {
-                opacity: 0.5;
-              }
-            `}
-          >
-            <br />
-            Warning: Mint ending soon. Transactions not confirmed by mint end will fail. It is not advised to mint in the last 5 minutes.
-          </p>
         </RoundedContainer>
         <div
           className={css`
@@ -188,6 +171,47 @@ export const Frame = ({ tokens }: any) => {
             {/* <dd>Jan 2<sup>nd</sup> 2022, 20:00 EST</dd> */}
           </dl>
         </RoundedContainer>
+        <div
+          className={css`
+            height: 30px;
+            flex: 1;
+          `}
+        >
+          &nbsp;
+        </div>
+        <RoundedContainer>
+          <p
+            className={css`
+              font-family: Inter;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 16px;
+              line-height: 25px;
+
+              /* or 156% */
+
+              color: #ffffff;
+
+              opacity: 0.75;
+
+              sup {
+                opacity: 0.5;
+              }
+            `}
+          >
+            Built by{" "}
+            <a
+              className={css`
+                text-decoration: none;
+                color: inherit;
+              `}
+              href="https://zora.co/"
+            >
+              Zora <ArrowNext />
+            </a>
+            : the NFT Marketplace protocol
+          </p>
+        </RoundedContainer>
       </div>
 
       {tokens.length ? (
@@ -199,7 +223,6 @@ export const Frame = ({ tokens }: any) => {
             justify-content: center;
             flex-direction: column;
             align-self: flex-start;
-
 
             @media only screen and (max-width: 800px) {
               margin-top: 30px;
@@ -217,7 +240,11 @@ export const Frame = ({ tokens }: any) => {
             width: 100%;
           `}
         >
-          <div className={css`padding-top:100px`}>
+          <div
+            className={css`
+              padding-top: 100px;
+            `}
+          >
             <DefaultZorb />
             <div
               className={css`
