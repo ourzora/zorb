@@ -4,6 +4,7 @@ import { NETWORK_ID, RPC_URL, ZORB_CONTRACT } from "./env-vars";
 const Contract = new ethers.Contract(ZORB_CONTRACT, [
   "function ownerOf(uint256 tokenId) view returns (address)",
   "function zorbForAddress(address user) view returns (string)",
+  "function getZorbRenderAddress(uint256 tokenId) view returns (address)",
 ]);
 
 export async function getTokenInfo(tokenId: string) {
@@ -13,6 +14,7 @@ export async function getTokenInfo(tokenId: string) {
   );
   const connectedContract = Contract.connect(provider);
   const ownerAddress = await connectedContract.ownerOf(tokenId);
-  const zorbImage = await connectedContract.zorbForAddress(ownerAddress);
-  return {ownerAddress, zorbImage};
+  const renderAddress = await connectedContract.getZorbRenderAddress(tokenId);
+  const zorbImage = await connectedContract.zorbForAddress(renderAddress);
+  return { ownerAddress, zorbImage };
 }
