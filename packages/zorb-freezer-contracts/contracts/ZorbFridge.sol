@@ -48,7 +48,7 @@ contract ZorbFridge is ERC721 {
                 abi.encodePacked(
                     '{"name": "Frozen Zorb #',
                     idString,
-                    unicode'", "description": "Zorbs were distributed for free by ZORA on New Year’s 2022. Zorbs transform when sent to someone, Frozen Zorbs allow you to "freeze" their appearance.\\n\\nView this NFT at [zorb.dev/nft/',
+                    unicode'", "description": "Zorbs were distributed for free by ZORA on New Year’s 2022. Zorbs transform when sent to someone, Frozen Zorbs allow you to freeze their appearance.\\n\\nView this NFT at [zorb.dev/nft/',
                     idString,
                     "](https://zorb.dev/nft/",
                     idString,
