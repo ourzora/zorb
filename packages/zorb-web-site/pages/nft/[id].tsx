@@ -109,6 +109,13 @@ export default function Zorb({ id, tokenInfo }: any) {
                 View on ZORA <ArrowNext />
               </a>
             </div>
+            <div>
+              <a
+                download={`zorb-${id}.svg`}
+                href={image}
+                title={`Zorb #${id}`}
+              >💾 Download SVG</a>
+            </div>
           </div>
         </RoundedContainer>
       </div>
