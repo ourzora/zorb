@@ -96,7 +96,7 @@ contract ZorbNFT is ERC721, Ownable {
 
     /// Checks if a contract interation is approved or by owner
     modifier onlyApproved(uint256 tokenId) {
-        require(_isApprovedOrOwner(msg.sender, tokenId), "Ony approved");
+        require(_isApprovedOrOwner(msg.sender, tokenId), "Only approved");
         _;
     }
 
