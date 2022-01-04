@@ -1,8 +1,8 @@
 import { gradientForAddress } from "./lib";
 
-export const zorbImageDataURI = (address: string) => {
+export const zorbImageSVG = (address: string) => {
   const gradientInfo = gradientForAddress(address);
-  const resultSvg = `
+  return `
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110">
   <defs>
     <radialGradient
@@ -33,5 +33,11 @@ export const zorbImageDataURI = (address: string) => {
   </g>
 </svg>
   `;
-  return `data:image/svg+xml;base64,${btoa(resultSvg)}`;
+};
+
+export const zorbImageDataURI = (address: string) => {
+  return `data:image/svg+xml;base64,${Buffer.from(
+    zorbImageSVG(address),
+    "utf-8"
+  ).toString("base64")}`;
 };
