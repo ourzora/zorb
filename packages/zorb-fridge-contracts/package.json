@@ -1,9 +1,9 @@
 {
-  "name": "@zoralabs/zorb-contracts",
+  "name": "@zoralabs/zorb-fridge-contracts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "author": "iain nash",
+  "author": "Miguel Piedrafita",
   "license": "GPLv3",
   "private": false,
   "scripts": {
@@ -19,12 +19,9 @@
     "@typechain/ethers-v5": "^7.0.1",
     "@typechain/hardhat": "^2.3.0",
     "@types/chai": "^4.2.21",
-    "@types/data-urls": "^2.0.1",
     "@types/mocha": "^8.2.3",
     "@types/node": "^16.4.0",
-    "@types/tinycolor2": "^1.4.3",
     "chai": "^4.3.4",
-    "data-urls": "^3.0.0",
     "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.4.0",
     "ethers": "^5.4.4",
@@ -35,9 +32,9 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.4.0",
+    "@rari-capital/solmate": "^6.2.0",
     "@zoralabs/nft-editions-contracts": "^1.0.3",
-    "tinycolor2": "^1.4.2",
+    "@zoralabs/zorb-contracts": "^1.0.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   }

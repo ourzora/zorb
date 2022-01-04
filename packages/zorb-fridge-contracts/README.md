@@ -13,3 +13,5 @@ The Zorb contract contains a list of known marketplace contracts. If a zorb is t
 The Zorb Fridge takes advantage of this functionality by "wrapping" your Zorb NFTs and forwarding all `tokenURI` calls, effectively freezing the metadata until you decide to withdraw it.
 
 > NOTE: For this to work, ZORA needs to add the address of this contract to the `knownMarketplaces` mapping on the Zorb contract.
+
+Special thanks to @m1guelpf for contributing this module.
