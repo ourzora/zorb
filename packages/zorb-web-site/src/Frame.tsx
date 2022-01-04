@@ -34,13 +34,17 @@ export const Frame = ({ tokens }: any) => {
         `}
       >
         <RoundedContainer>
-          <p
+          <div
             className={css`
               font-family: Inter;
               font-style: normal;
               font-weight: normal;
               font-size: 16px;
               line-height: 25px;
+
+              p {
+                margin-bottom: 25px;
+              }
 
               /* or 156% */
 
@@ -53,27 +57,32 @@ export const Frame = ({ tokens }: any) => {
               }
             `}
           >
-            In celebration of the one-year anniversary of the Zora protocol and
-            the initial release of{" "}
-            <code
-              className={css`
-                font-family: "DM Mono";
-              `}
-            >
-              zorb
-            </code>
-            , we invite you to mint a commemorative NFT for your collection.
-            Minting is open for{" "}
-            <code
-              className={css`
-                font-family: "DM Mono";
-              `}
-            >
-              20+22
-            </code>{" "}
-            hours on New Years Day and cements your status as an early supporter
-            of Zora.
-          </p>
+            <p>
+              <a
+                className={css`
+                  font-family: "DM Mono";
+                  font-weight: 600;
+                  text-decoration: none;
+                  color: inherit;
+                `}
+                href="https://github.com/ourzora/zorb/tree/main/packages/zorb-web-component"
+                target="_blank"
+              >
+                zorb <ArrowNext />{" "}
+              </a>
+              is a simple, open-source identity system for the decentralized
+              Internet. It is maintained by ZORA, the decentralized marketplace
+              protocol.
+            </p>
+            <p>It is available as a Javascript library on yarn and npm.</p>
+            <p>
+              To ring in 2022, we invite you to mint a zorb NFT of your own.
+              Each NFT imbues the properties of its wallet holder, and when sent
+              to someone else, will transform. Minting is free for 42 hours on
+              New Year’s Day and cements your status as an early supporter of
+              Zora.
+            </p>
+          </div>
           <MintButton />
         </RoundedContainer>
         <div
