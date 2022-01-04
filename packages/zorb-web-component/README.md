@@ -1,10 +1,23 @@
 # Zorb Renderer for Web
 
-
+This is the web-based Zorb renderer component
 
 ----
 
-### Use Zora Zorb with react:
+### Use Zora Zorb with react with a web component:
+
+Full example: https://codesandbox.io/s/zorb-demo-v1js7
+
+```js
+import '@zoralabs/zorb';
+
+export const Zorb = ({address}: {address: string}) => (
+  return <zora-zorb address={address}></zora-zorb>
+);
+```
+
+
+### Use Zora Zorb with react in an image tag:
 
 ```js
 import {useMemo} from 'react';
