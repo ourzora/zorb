@@ -73,13 +73,14 @@ contract ZorbFridge is ERC721 {
     /// @param from from address
     /// @param tokenId tokenId received
     function onERC721Received(
-        address from,
         address,
+        address from,
         uint256 tokenId,
         bytes calldata
     ) external returns (bytes4) {
-        require(msg.sender == address(zorb), "not a zorb");
+        require(msg.sender == address(zorb), "Not a zorb");
 
+        // Mint from Frozen Zorb
         _mintFrozen(from, tokenId);
 
         return this.onERC721Received.selector;
