@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 import React from "react";
+import DiscordLogo from "./DiscordLogo";
 import Octo from "./octo";
 
 export const PageHeader = ({ children }: { children: React.ReactNode }) => (
@@ -24,7 +25,7 @@ export const PageHeader = ({ children }: { children: React.ReactNode }) => (
       `}
     >
       <a
-      href="/"
+        href="/"
         className={css`
           color: #f6f6f6;
 
@@ -43,18 +44,42 @@ export const PageHeader = ({ children }: { children: React.ReactNode }) => (
         `}
       >
         <span
-            className={css`
-              opacity: 0.5;
-            `}
-          >
-            npm i{" "}
-          </span>
-          <span>@zoralabs/zorb</span>
+          className={css`
+            opacity: 0.5;
+          `}
+        >
+          npm i{" "}
+        </span>
+        <span>@zoralabs/zorb</span>
         {/*on-chain <span>zorb</span>*/}
       </a>
-      <a target="_BLANK" href="https://github.com/ourzora/zorb">
-        <Octo />
-      </a>
+      <div className={css`
+        display: flex;
+        align-items: center;
+
+        a {
+          opacity: 0.7;
+          transition: opacity 0.4s ease-in;
+        }
+        a:hover {
+          opacity: 1;
+        }
+      `}>
+        <a target="_blank" href="https://github.com/ourzora/zorb">
+          <Octo />
+        </a>
+        <a
+          className={css`
+            display: inline-block;
+            margin-bottom: -4px;
+            margin-left: 16px;
+          `}
+          target="_blank"
+          href="https://zora.community"
+        >
+          <DiscordLogo />
+        </a>
+      </div>
     </div>
     <div
       className={css`
