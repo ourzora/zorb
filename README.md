@@ -16,6 +16,12 @@ on-chain zorb NFT contracts
 
 [View Zorb Contracts](packages/zorb-contracts)
 
+### zorb-fridge-contracts
+
+zorb fridge feature contracts (by m1guelpf)
+
+[View Zorb Fridge Contracts](packages/zorb-fridge-contracts)
+
 ### zorb-web-site
 
 web-site for zorbs and minting

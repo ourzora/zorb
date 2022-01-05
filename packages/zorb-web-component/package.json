@@ -1,5 +1,5 @@
 {
-  "name": "@zoralabs/zorb-web-component",
+  "name": "@zoralabs/zorb",
   "version": "0.0.1",
   "license": "MIT",
   "main": "./dist/zorb-web-component.es.js",
