@@ -12,7 +12,7 @@ web component for zorbs
 
 ### zorb-contracts
 
-on-chain zorb NFT contracts 
+on-chain zorb NFT contracts
 
 [View Zorb Contracts](packages/zorb-contracts)
 
@@ -27,4 +27,8 @@ zorb fridge feature contracts (by m1guelpf)
 web-site for zorbs and minting
 
 [View Zorb Website](packages/zorb-web-site)
+
+## Licenses
+
+For full license details, please refer to the license file in each package's directory.
 
