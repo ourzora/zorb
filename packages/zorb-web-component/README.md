@@ -2,8 +2,6 @@
 
 This is the web-based Zorb renderer component
 
-----
-
 #### Use Zora Zorb without any web frameworks:
 
 ```html
@@ -58,6 +56,7 @@ import '@zoralabs/zorb';
 ```
 
 ```js
+<<<<<<< HEAD
 <zora-zorb address="0x7a6f726121030cadf9923333d5b6f29277024027" size="200px"></zora-zorb>
 ```
 

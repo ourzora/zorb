@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "author": "iain nash",
-  "license": "GPLv3",
+  "license": "GPL-3.0-only",
   "private": false,
   "scripts": {
     "typechain": "hardhat typechain",
