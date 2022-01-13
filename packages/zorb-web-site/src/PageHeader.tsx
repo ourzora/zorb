@@ -44,14 +44,17 @@ export const PageHeader = ({ children }: { children: React.ReactNode }) => (
         `}
       >
         <span
-          className={css`
-            opacity: 0.5;
-          `}
-        >
-          npm i{" "}
-        </span>
-        <span>@zoralabs/zorb</span>
+            className={css`
+              opacity: 0.5;
+            `}
+          >
+            npm i{" "}
+          </span>
+          <span>@zoralabs/zorb</span>
         {/*on-chain <span>zorb</span>*/}
+      </a>
+      <a target="_BLANK" href="https://github.com/ourzora/zorb">
+        <Octo />
       </a>
       <div className={css`
         display: flex;
