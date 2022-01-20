@@ -44,30 +44,29 @@ export const PageHeader = ({ children }: { children: React.ReactNode }) => (
         `}
       >
         <span
-            className={css`
-              opacity: 0.5;
-            `}
-          >
-            npm i{" "}
-          </span>
-          <span>@zoralabs/zorb</span>
+          className={css`
+            opacity: 0.5;
+          `}
+        >
+          npm i{" "}
+        </span>
+        <span>@zoralabs/zorb</span>
         {/*on-chain <span>zorb</span>*/}
       </a>
-      <a target="_BLANK" href="https://github.com/ourzora/zorb">
-        <Octo />
-      </a>
-      <div className={css`
-        display: flex;
-        align-items: center;
+      <div
+        className={css`
+          display: flex;
+          align-items: center;
 
-        a {
-          opacity: 0.7;
-          transition: opacity 0.4s ease-in;
-        }
-        a:hover {
-          opacity: 1;
-        }
-      `}>
+          a {
+            opacity: 0.7;
+            transition: opacity 0.4s ease-in;
+          }
+          a:hover {
+            opacity: 1;
+          }
+        `}
+      >
         <a target="_blank" href="https://github.com/ourzora/zorb">
           <Octo />
         </a>
