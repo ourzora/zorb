@@ -3,17 +3,22 @@ import typescript from "rollup-plugin-typescript";
 import autoPreprocess from "svelte-preprocess";
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
-import dts from 'rollup-plugin-dts';
+import dts from "rollup-plugin-dts";
 
 import tinycolor from "tinycolor2";
 
-// const name = require('./package.json').main.replace(/\.js$/, '')
-
-// const bundle = config => ({
-//   ...config,
-//   input: 'src/index.ts',
-//   external: id => !/^[./]/.test(id),
-// })
+const commonPlugins = [
+  resolve({ node: true }),
+  commonjs({
+    namedExports: {
+      tinycolor2: Object.keys(tinycolor),
+    },
+  }),
+  typescript({
+    tsconfig: false,
+    esModuleInterop: true,
+  }),
+];
 
 export default [
   {
@@ -31,20 +36,11 @@ export default [
       },
     ],
     plugins: [
-      resolve({ node: true }),
       svelte({
         preprocess: autoPreprocess(),
         compilerOptions: { customElement: true },
       }),
-      commonjs({
-        namedExports: {
-          tinycolor2: Object.keys(tinycolor),
-        },
-      }),
-      typescript({
-        tsconfig: false,
-        esModuleInterop: true,
-      }),
+      ...commonPlugins,
     ],
   },
   {
@@ -54,17 +50,9 @@ export default [
         file: "dist/main.js",
         format: "esm",
         name: "zorb",
-      }
+      },
     ],
-    plugins: [
-      resolve({ node: true }),
-      commonjs({
-        namedExports: {
-          tinycolor2: Object.keys(tinycolor),
-        },
-      }),
-      typescript(),
-    ],
+    plugins: [...commonPlugins],
   },
   {
     input: "./src/main.ts",
