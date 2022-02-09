@@ -51,7 +51,7 @@ export default [
     input: "src/main.ts",
     output: [
       {
-        file: "dist/main.es.js",
+        file: "dist/main.js",
         format: "esm",
         name: "zorb",
       }

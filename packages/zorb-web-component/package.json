@@ -1,8 +1,8 @@
 {
   "name": "@zoralabs/zorb",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "license": "MIT",
-  "main": "./dist/main.es.js",
+  "main": "./dist/main.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c",
