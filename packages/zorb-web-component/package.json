@@ -2,17 +2,16 @@
   "name": "@zoralabs/zorb",
   "version": "0.0.2",
   "license": "MIT",
-  "main": "./dist/zorb-web-component.es.js",
+  "main": "./dist/main.es.js",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
+    "build": "rollup -c",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
     "@tsconfig/svelte": "^2.0.1",
     "sveld": "^0.11.0",
     "svelte": "^3.37.0",
@@ -20,7 +19,11 @@
     "svelte-preprocess": "^4.10.1",
     "tslib": "^2.2.0",
     "typescript": "^4.3.2",
-    "vite": "^2.6.0"
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-dts": "^4.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-typescript": "^1.0.1"
   },
   "dependencies": {
     "@ethersproject/bytes": "^5.5.0",
