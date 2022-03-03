@@ -56,7 +56,6 @@ import '@zoralabs/zorb';
 ```
 
 ```js
-<<<<<<< HEAD
 <zora-zorb address="0x7a6f726121030cadf9923333d5b6f29277024027" size="200px"></zora-zorb>
 ```
 
