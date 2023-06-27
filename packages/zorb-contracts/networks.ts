@@ -29,4 +29,12 @@ if (process.env.MAINNET_RPC) {
   };
 }
 
+if (process.env.GOERLI_RPC) {
+  networks.goerli = {
+    chainId: 5,
+    url: process.env.GOERLI_RPC,
+    accounts,
+  };
+}
+
 export default networks;
